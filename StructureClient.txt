@@ -1,0 +1,52 @@
+@startuml
+title Diagrama de Clases - Cliente
+
+class ClienteApp {
+    - socket : Socket
+    - usuario : Usuario
+    - in : InputStream
+    - out : OutputStream
+    + conectar(String, int)
+    + enviarMensaje(Mensaje)
+    + enviarArchivo(Archivo)
+    + recibirDatos()
+    + desconectar()
+}
+
+class Usuario {
+    - id : int
+    - nombre : String
+    - ip : String
+    - estado : String
+    + getters/setters
+}
+
+class Mensaje {
+    - id : int
+    - remitente : Usuario
+    - destinatario : Usuario
+    - contenido : String
+    - fecha : Date
+    + getters/setters
+}
+
+class Archivo {
+    - id : int
+    - nombre : String
+    - tamaño : long
+    - data : byte[]
+    + getters/setters
+}
+
+class UI {
+    + mostrarLogin()
+    + mostrarChat()
+    + mostrarArchivos()
+    + mostrarErrores()
+}
+
+ClienteApp "1" --> "1" Usuario
+ClienteApp "1" --> "*" Mensaje
+ClienteApp "1" --> "*" Archivo
+ClienteApp "1" --> "1" UI
+@enduml

@@ -18,7 +18,6 @@ class Usuario {
     - nombre : String
     - ip : String
     - estado : String
-    + getters/setters
 }
 
 class Mensaje {
@@ -27,7 +26,6 @@ class Mensaje {
     - destinatario : Usuario
     - contenido : String
     - fecha : Date
-    + getters/setters
 }
 
 class Archivo {
@@ -35,7 +33,6 @@ class Archivo {
     - nombre : String
     - tamaño : long
     - data : byte[]
-    + getters/setters
 }
 
 class UI {

@@ -12,7 +12,7 @@ class Servidor {
 
 class ClienteHandler {
     - socket : Socket
-    - usuario : Usuario
+    - usuario : Usuario+
     - in : InputStream
     - out : OutputStream
     - servidor : Servidor
@@ -28,7 +28,6 @@ class Usuario {
     - estado : String
     - mensajesEnviados : int
     - mensajesRecibidos : int
-    + getters/setters
 }
 
 class Mensaje {
@@ -37,7 +36,6 @@ class Mensaje {
     - destinatario : Usuario
     - contenido : String
     - fecha : Date
-    + getters/setters
 }
 
 class Archivo {
@@ -46,7 +44,6 @@ class Archivo {
     - tamaño : long
     - propietario : Usuario
     - data : byte[]
-    + getters/setters
 }
 
 class DAO {

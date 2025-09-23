@@ -1,7 +1,7 @@
 @startuml
 title Diagrama de Clases - Cliente
 
-class ClienteApp {
+class ClientManager {
     - socket : Socket
     - usuario : Usuario
     - in : InputStream
@@ -42,8 +42,23 @@ class UI {
     + mostrarErrores()
 }
 
-ClienteApp "1" --> "1" Usuario
-ClienteApp "1" --> "*" Mensaje
-ClienteApp "1" --> "*" Archivo
-ClienteApp "1" --> "1" UI
+class ClienteController {
+    - clientManager : ClientManager
+    - ui : UI
+    + iniciarSesion(usuario : String, contrasena : String)
+    + enviarMensaje(mensaje : Mensaje)
+    + recibirMensaje()
+    + enviarArchivo(archivo : Archivo)
+    + desconectar()
+}
+
+ClientManager "1" --> "1" Usuario
+ClientManager "1" --> "*" Mensaje
+ClientManager "1" --> "*" Archivo
+ClientManager "1" --> "1" UI
+ClienteController "1" --> "1" ClientManager
+ClienteController "1" --> "1" UI
+ClienteController "1" --> "*" Mensaje
+ClienteController "1" --> "*" Archivo
+
 @enduml

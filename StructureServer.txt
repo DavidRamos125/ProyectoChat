@@ -12,7 +12,7 @@ class Servidor {
 
 class ClienteHandler {
     - socket : Socket
-    - usuario : Usuario+
+    - usuario : Usuario
     - in : InputStream
     - out : OutputStream
     - servidor : Servidor
@@ -58,10 +58,28 @@ class Logger {
     + logAccion(String)
 }
 
+class ServidorController {
+    - servidor : Servidor
+    - dao : DAO
+    - logger : Logger
+    + iniciarServidor(puerto : int)
+    + aceptarConexion()
+    + procesarMensaje(mensaje : Mensaje)
+    + procesarArchivo(archivo : Archivo)
+    + actualizarEstadoUsuario(usuario : Usuario)
+    + registrarAccion(accion : String)
+}
+
 Servidor "1" --> "*" ClienteHandler
 Servidor "1" --> "1" Logger
 ClienteHandler "1" --> "1" Usuario
 ClienteHandler "1" --> "*" Mensaje
 ClienteHandler "1" --> "*" Archivo
 Servidor "1" --> "1" DAO
+ServidorController "1" --> "1" Servidor
+ServidorController "1" --> "1" Logger
+ServidorController "1" --> "1" DAO
+ServidorController "1" --> "*" Mensaje
+ServidorController "1" --> "*" Archivo
+
 @enduml

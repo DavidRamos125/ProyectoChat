@@ -1,19 +1,18 @@
 package com.proyect.server.domain.entity;
 
-import com.proyect.server.domain.User;
 import com.proyect.server.domain.interfaces.Content;
 import com.proyect.server.domain.interfaces.MeasurableContent;
 
 public class FileContent implements Content, MeasurableContent {
+    private Long size;
+    private String id;
     private static final ContentType type = ContentType.FILE;
     private String name;
-    private Long size;
-    private User owner;
     private byte[] data;
 
-    public FileContent(String name, User owner, byte[] data) {
+    public FileContent(String name, String id, byte[] data) {
         this.name = name;
-        this.owner = owner;
+        this.id = id;
         this.data = data;
         setSize();
     }
@@ -27,13 +26,6 @@ public class FileContent implements Content, MeasurableContent {
         this.name = name;
     }
 
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
-        this.owner = owner;
-    }
 
     public void setData(byte[] data) {
         this.data = data;

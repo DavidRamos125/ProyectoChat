@@ -1,6 +1,5 @@
 package com.proyect.server.domain.entity;
 
-import com.proyect.server.domain.User;
 import com.proyect.server.domain.interfaces.Content;
 import java.util.Date;
 

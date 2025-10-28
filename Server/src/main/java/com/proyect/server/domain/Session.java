@@ -1,4 +1,6 @@
 package com.proyect.server.domain;
+import com.proyect.server.domain.entity.User;
+
 import java.util.Date;
 
 public class Session {

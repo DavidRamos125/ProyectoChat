@@ -1,5 +1,5 @@
 package com.proyect.server.domain;
-import com.proyect.server.domain.entity.User;
+import com.proyect.server.domain.DAO.User;
 
 import java.util.Date;
 

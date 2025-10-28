@@ -1,7 +1,6 @@
 package com.proyect.server.domain.DAO;
 
 import com.proyect.server.domain.entity.FileContent;
-import com.proyect.server.domain.entity.User;
 
 import java.sql.*;
 import java.util.ArrayList;

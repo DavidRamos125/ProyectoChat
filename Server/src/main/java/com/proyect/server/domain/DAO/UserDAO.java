@@ -1,7 +1,5 @@
 package com.proyect.server.domain.DAO;
 
-import com.proyect.server.domain.entity.User;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

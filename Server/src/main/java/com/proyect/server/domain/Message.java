@@ -1,4 +1,4 @@
-package com.proyect.server.domain.entity;
+package com.proyect.server.domain;
 
 import com.proyect.server.domain.DAO.User;
 import com.proyect.server.domain.interfaces.Content;

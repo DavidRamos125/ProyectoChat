@@ -1,4 +1,4 @@
-package com.proyect.server.domain.entity;
+package com.proyect.server.domain;
 
 public enum ContentType {
     TEXT,

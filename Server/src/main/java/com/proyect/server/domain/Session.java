@@ -1,5 +1,4 @@
 package com.proyect.server.domain;
-import com.proyect.server.domain.DAO.User;
 
 import java.util.Date;
 

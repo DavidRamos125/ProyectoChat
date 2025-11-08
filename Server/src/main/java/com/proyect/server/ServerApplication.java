@@ -13,10 +13,8 @@ public class ServerApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Iniciando servidor...");
-        while (true){
+        System.out.println(" Servidor iniciado");
 
-        }
     }
 
 }

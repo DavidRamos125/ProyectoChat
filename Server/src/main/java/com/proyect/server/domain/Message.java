@@ -1,6 +1,5 @@
 package com.proyect.server.domain;
 
-import com.proyect.server.domain.DAO.User;
 import com.proyect.server.domain.interfaces.Content;
 import java.util.Date;
 

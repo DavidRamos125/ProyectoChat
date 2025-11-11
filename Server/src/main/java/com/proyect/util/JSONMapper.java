@@ -1,0 +1,29 @@
+package com.proyect.util;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+
+public class JSONMapper {
+
+    private static final ObjectMapper mapper = new ObjectMapper()
+            .enable(SerializationFeature.INDENT_OUTPUT)
+            .configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+
+    public static String objectToJSON(Object obj) {
+        try {
+            return mapper.writeValueAsString(obj);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error al convertir objeto a JSON", e);
+        }
+    }
+
+    public static <T> T JSONToObject(String json, Class<T> baseClass) {
+        try {
+            return mapper.readValue(json, baseClass);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException("Error al convertir JSON a objeto", e);
+        }
+    }
+}

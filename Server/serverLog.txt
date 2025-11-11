@@ -1,0 +1,48 @@
+[2025-11-08 08:25:54] Probando
+[2025-11-08 08:49:44] Servidor iniciado en el puerto 8081
+[2025-11-08 10:15:56] Servidor detenido.
+[2025-11-08 10:26:33] Servidor iniciado en el puerto 8083
+[2025-11-08 10:27:00] Nueva conexión desde 127.0.0.1:56403
+[2025-11-08 11:49:13] Servidor iniciado en el puerto 8083
+[2025-11-08 11:49:16] Nueva conexión desde 127.0.0.1:61000
+[2025-11-08 11:49:16] Sesión iniciada: 127.0.0.1:61000
+[2025-11-08 11:49:22] Mensaje recibido de 127.0.0.1:61000: hola
+[2025-11-08 11:49:39] Error en sesión 127.0.0.1:61000: Connection reset
+[2025-11-08 11:49:39] Sesión eliminada: 127.0.0.1:61000
+[2025-11-08 11:49:39] Sesión cerrada: 127.0.0.1:61000
+[2025-11-09 05:09:03] Servidor iniciado en el puerto 8083
+[2025-11-09 05:12:22] Servidor iniciado en el puerto 8083
+[2025-11-09 05:12:25] Servidor detenido.
+[2025-11-09 05:12:25] Error al iniciar el servidor: Socket closed
+[2025-11-09 05:12:25] Servidor detenido.
+[2025-11-09 05:12:33] Servidor detenido.
+[2025-11-09 05:12:35] Servidor iniciado en el puerto 8083
+[2025-11-09 05:12:35] Error al iniciar el servidor: Socket is closed
+[2025-11-09 05:12:35] Servidor detenido.
+[2025-11-09 05:12:40] Servidor iniciado en el puerto 8083
+[2025-11-09 05:12:40] Error al iniciar el servidor: Socket is closed
+[2025-11-09 05:12:40] Servidor detenido.
+[2025-11-09 05:33:25] Servidor iniciado en el puerto 8083
+[2025-11-09 05:33:25] Servidor detenido.
+[2025-11-09 05:34:51] Servidor iniciado en el puerto 8083
+[2025-11-09 05:34:54] Servidor detenido.
+[2025-11-09 05:34:54] Error al iniciar el servidor: Socket closed
+[2025-11-09 05:34:54] Servidor detenido.
+[2025-11-09 05:35:02] Servidor iniciado en el puerto 8083
+[2025-11-09 05:35:04] Servidor detenido.
+[2025-11-09 05:35:04] Error al iniciar el servidor: Socket closed
+[2025-11-09 05:35:04] Servidor detenido.
+[2025-11-09 05:59:35] Servidor iniciado en el puerto 8083
+[2025-11-09 06:00:17] Servidor iniciado en el puerto 8083
+[2025-11-09 06:00:21] Servidor detenido.
+[2025-11-09 06:00:21] se ha detenido el servidor: Socket closed
+[2025-11-10 10:20:00] Servidor iniciado en el puerto 8083
+[2025-11-10 10:20:03] Nueva conexión desde 127.0.0.1:59647
+[2025-11-10 10:23:07] Servidor iniciado en el puerto 8083
+[2025-11-10 10:23:10] Nueva conexión desde 127.0.0.1:59691
+[2025-11-10 10:23:10] Sesión iniciada: 127.0.0.1:59691
+[2025-11-10 10:23:12] Mensaje recibido de 127.0.0.1:59691: HOLA
+[2025-11-10 10:23:57] Mensaje recibido de 127.0.0.1:59691: HOLA
+[2025-11-10 10:24:01] Error en sesión 127.0.0.1:59691: Connection reset
+[2025-11-10 10:24:01] Sesión eliminada: 127.0.0.1:59691
+[2025-11-10 10:24:01] Sesión cerrada: 127.0.0.1:59691

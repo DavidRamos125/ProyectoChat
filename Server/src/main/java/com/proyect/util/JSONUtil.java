@@ -4,11 +4,19 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-public class JSONMapper {
+public class JSONUtil {
 
     private static final ObjectMapper mapper = new ObjectMapper()
             .enable(SerializationFeature.INDENT_OUTPUT)
             .configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+    public static String getProperty(String jsonString, String property) {
+        try {
+            return mapper.readTree(jsonString).path(property).asText();
+        } catch (Exception e) {
+            throw new RuntimeException("Error al obtener propiedad '" + property + "' del JSON", e);
+        }
+    }
 
 
     public static String objectToJSON(Object obj) {

@@ -46,3 +46,4 @@
 [2025-11-10 10:24:01] Error en sesión 127.0.0.1:59691: Connection reset
 [2025-11-10 10:24:01] Sesión eliminada: 127.0.0.1:59691
 [2025-11-10 10:24:01] Sesión cerrada: 127.0.0.1:59691
+[2025-11-13 05:01:35] Servidor detenido.

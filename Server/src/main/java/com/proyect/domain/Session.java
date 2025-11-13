@@ -7,7 +7,6 @@ public class Session {
     private User user;
     private String ip;
     private Date ConnectionTime;
-    private String status;
 
     public String getId() {
         return id;

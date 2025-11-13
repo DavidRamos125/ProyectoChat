@@ -2,13 +2,13 @@ package com.proyect.application;
 
 import com.proyect.controller.ServerController;
 import com.proyect.domain.Session;
-import com.proyect.domain.User;
 import com.proyect.factory.ExternalFactory;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class SessionHandler implements Runnable {
+public class ConnectionHandler implements Runnable {
 
     private final Socket socket;
     private final ServerController server;
@@ -17,12 +17,18 @@ public class SessionHandler implements Runnable {
     private PrintWriter out;
     private final String clientKey;
     private Session session;
+    private boolean loggedIn;
+    private ConcurrentHashMap<String, ConnectionHandler> sessions;
+    private CommunicationHandler communicationHandler;
 
-    public SessionHandler(Socket socket) {
+    public ConnectionHandler(Socket socket) {
         this.socket = socket;
         this.server = ExternalFactory.getServerController();
         this.logger = ExternalFactory.getLogger();
         this.clientKey = socket.getInetAddress().getHostAddress() + ":" + socket.getPort();
+        this.sessions = server.getSessions();
+        this.loggedIn = false;
+        this.communicationHandler = ExternalFactory.getCommunicationHandler(this);
     }
 
     @Override
@@ -31,13 +37,12 @@ public class SessionHandler implements Runnable {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-            logger.logAccion("Sesión iniciada: " + clientKey);
+            logger.logAccion(" Conexion establecida - ID: " + clientKey);
             out.println("Conexión establecida con el servidor.");
 
             String message;
             while ((message = in.readLine()) != null) {
-                logger.logAccion("Mensaje recibido de " + clientKey + ": " + message);
-                out.println("Servidor recibió: " + message);
+                communicationHandler.handleMessage(message);
             }
 
         } catch (IOException e) {

@@ -1,7 +1,5 @@
 package com.proyect.application;
 
-import com.proyect.domain.Session;
-import com.proyect.domain.User;
 import com.proyect.factory.ExternalFactory;
 import com.proyect.util.Config;
 
@@ -14,10 +12,11 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Server implements Runnable {
     private final int port;
     private ServerSocket serverSocket;
-    private final ConcurrentHashMap<String, SessionHandler> sessions = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, ConnectionHandler> sessions = new ConcurrentHashMap<>();
     private final Logger logger;
-    private static Server instance;
     private volatile boolean running = false;
+
+    private static Server instance;
 
     public static Server getInstance() {
         if (instance == null) {
@@ -40,7 +39,7 @@ public class Server implements Runnable {
                 serverSocket.close();
             }
 
-            for (SessionHandler session : sessions.values()) {
+            for (ConnectionHandler session : sessions.values()) {
                 session.close();
             }
 
@@ -56,31 +55,12 @@ public class Server implements Runnable {
         logger.logAccion("Sesión eliminada: " + clientKey);
     }
 
-    public ConcurrentHashMap<String, SessionHandler> getSessions() {
+    public ConcurrentHashMap<String, ConnectionHandler> getSessions() {
         return sessions;
     }
 
     public Logger getLogger() {
         return logger;
-    }
-
-    public void acceptClient(SessionHandler sessionHandler, String clientKey) {
-//        Session session = sessionHandler.getSession();
-//        User user = session.getUser();
-//        if(verifyMaxSessions(user)) {
-//            sessions.put(clientKey, sessionHandler);
-//            new Thread(sessionHandler).start();
-//        }
-        sessions.put(clientKey, sessionHandler);
-        new Thread(sessionHandler).start();
-    }
-
-    public boolean verifyMaxSessions(User user) {
-        long count = sessions.values().stream()
-                .filter(s -> s.getSession().getUser().equals(user))
-                .count();
-
-        return count < Integer.parseInt(Config.getProperty("max.sessions"));
     }
 
 
@@ -103,8 +83,8 @@ public class Server implements Runnable {
                 String clientKey = clientSocket.getInetAddress().getHostAddress() + ":" + clientSocket.getPort();
                 logger.logAccion("Nueva conexión desde " + clientKey);
 
-                SessionHandler session = new SessionHandler(clientSocket);
-                acceptClient(session, clientKey);
+                ConnectionHandler session = new ConnectionHandler(clientSocket);
+                new Thread(session).start();
             }
         } catch (IOException e) {
             logger.logAccion("se ha detenido el servidor: " + e.getMessage());

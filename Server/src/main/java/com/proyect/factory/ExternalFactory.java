@@ -1,6 +1,8 @@
 package com.proyect.factory;
 
 import com.proyect.GUI.VentanaPrincipal;
+import com.proyect.application.CommunicationHandler;
+import com.proyect.application.ConnectionHandler;
 import com.proyect.application.Logger;
 import com.proyect.application.Server;
 import com.proyect.controller.ServerController;
@@ -9,6 +11,10 @@ import java.io.IOException;
 import java.net.ServerSocket;
 
 public class ExternalFactory {
+
+    public static CommunicationHandler getCommunicationHandler(ConnectionHandler connectionHandler) {
+        return new CommunicationHandler(connectionHandler);
+    }
 
     public static ServerController getServerController() {
         return new ServerController();

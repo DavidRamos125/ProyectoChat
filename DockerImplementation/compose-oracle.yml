@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  oracle:
+    image: gvenzl/oracle-xe:21-slim
+    container_name: messaging-oracle
+    restart: unless-stopped
+    environment:
+      ORACLE_PASSWORD: app123
+      ORACLE_DATABASE: messagingdb
+    ports:
+      - "1521:1521"
+    volumes:
+      - ./sql/oracle:/container-entrypoint-initdb.d
+      - oracle_data:/opt/oracle/oradata
+
+volumes:
+  oracle_data:

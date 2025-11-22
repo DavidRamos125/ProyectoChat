@@ -25,12 +25,19 @@ public class Logger {
         this.logFile = Config.getProperty("logFile");
     }
 
-    public synchronized void logAccion(String accion) {
+    /**
+     * Método simplificado para loguear acciones con ubicación
+     * @param accion La acción realizada
+     * @param ubicacion La clase/método donde se ejecutó la acción
+     */
+    public synchronized void logAccion(String accion, String ubicacion) {
         String timestamp = LocalDateTime.now().format(formatter);
-        String mensaje = "[" + timestamp + "] " + accion;
+        String mensaje = String.format("[%s] [%s] %s", timestamp, ubicacion, accion);
 
+        // Mostrar en consola
         System.out.println(mensaje);
 
+        // Escribir en archivo
         try (FileWriter fw = new FileWriter(logFile, true);
              PrintWriter pw = new PrintWriter(fw)) {
             pw.println(mensaje);

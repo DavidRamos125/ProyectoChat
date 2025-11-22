@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: messaging-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: messagingdb
+      POSTGRES_USER: appuser
+      POSTGRES_PASSWORD: app123
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./sql/postgres:/docker-entrypoint-initdb.d
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  pg_data:

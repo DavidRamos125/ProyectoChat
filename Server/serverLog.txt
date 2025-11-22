@@ -47,3 +47,55 @@
 [2025-11-10 10:24:01] Sesión eliminada: 127.0.0.1:59691
 [2025-11-10 10:24:01] Sesión cerrada: 127.0.0.1:59691
 [2025-11-13 05:01:35] Servidor detenido.
+[2025-11-18 10:45:30] Servidor detenido.
+[2025-11-22 10:45:44] Servidor iniciado en el puerto 8083
+[2025-11-22 10:45:46] Servidor detenido.
+[2025-11-22 10:45:46] se ha detenido el servidor: Socket closed
+[2025-11-22 11:53:25] [UserController] Usuario creado: testUser_e9efa193-3c61-473d-972a-bf3aaa51dccd
+[2025-11-22 11:53:26] [UserController] Usuario rechazado: testUser_e9efa193-3c61-473d-972a-bf3aaa51dccd (ID: 4)
+[2025-11-22 11:53:26] [UserController] Intento de login de usuario no aceptado: testUser_e9efa193-3c61-473d-972a-bf3aaa51dccd
+[2025-11-22 11:53:26] [UserController] Usuario creado: testUser_5cc3183d-3d5f-4f13-8cd4-4caec6e5560d
+[2025-11-22 11:53:26] [UserController] Usuario creado: testUser_c817c89b-06ac-4e94-a8d6-5391e6874bb9
+[2025-11-22 11:53:26] [UserController] Intento de login de usuario no aceptado: testUser_c817c89b-06ac-4e94-a8d6-5391e6874bb9
+[2025-11-22 11:53:26] [UserController] Usuario aprobado: testUser_c817c89b-06ac-4e94-a8d6-5391e6874bb9 (ID: 6)
+[2025-11-22 11:53:26] [UserController] Login exitoso para: testUser_c817c89b-06ac-4e94-a8d6-5391e6874bb9
+[2025-11-22 11:53:26] [UserController] Obtenidos 3 usuarios no aceptados
+[2025-11-22 12:16:47] [UserController] Error al crear usuario: juan - Duplicate entry 'juan' for key 'users.username'
+[2025-11-22 12:18:18] [UserController] Error al crear usuario: juan - Duplicate entry 'juan' for key 'users.username'
+[2025-11-22 12:18:18] [UserController] Error al crear usuario: juan - Duplicate entry 'juan' for key 'users.username'
+[2025-11-22 12:19:53] [UserController] Usuario creado: juan
+[2025-11-22 12:19:53] [UserController] Error al crear usuario: juan - Duplicate entry 'juan' for key 'users.username'
+[2025-11-22 12:19:53] [UserController] Usuario aprobado: juan (ID: 10)
+[2025-11-22 12:19:53] [UserController] Error al crear usuario: maria - Duplicate entry 'maria' for key 'users.username'
+[2025-11-22 12:22:52] [UserController] Usuario creado: juan3
+[2025-11-22 12:22:52] [UserController] Error al crear usuario: juan3 - Duplicate entry 'juan3' for key 'users.username'
+[2025-11-22 12:22:52] [UserController] Usuario aprobado: juan3 (ID: 13)
+[2025-11-22 12:22:52] [UserController] Usuario creado: maria4
+[2025-11-22 12:22:52] [UserController] Usuario aprobado: maria4 (ID: 15)
+[2025-11-22 12:23:56] [UserController] Usuario creado: juan3e
+[2025-11-22 12:23:56] [UserController] Error al crear usuario: juan3e - Duplicate entry 'juan3e' for key 'users.username'
+[2025-11-22 12:23:56] [UserController] Usuario aprobado: juan3e (ID: 16)
+[2025-11-22 12:23:56] [UserController] Usuario creado: mariar4
+[2025-11-22 12:23:56] [UserController] Usuario aprobado: mariar4 (ID: 18)
+[2025-11-22 12:29:11] [UserController] Usuario creado: juan3e1
+[2025-11-22 12:29:11] [UserController] Error al crear usuario: juan3e1 - Duplicate entry 'juan3e1' for key 'users.username'
+[2025-11-22 12:29:12] [UserController] Usuario aprobado: juan3e1 (ID: 19)
+[2025-11-22 12:29:12] [UserController] Usuario creado: mariar41
+[2025-11-22 12:29:12] [UserController] Usuario aprobado: mariar41 (ID: 21)
+[2025-11-22 12:32:30] [UserController] Error al crear usuario: juan3e1 - Duplicate entry 'juan3e1' for key 'users.username'
+[2025-11-22 12:32:30] [UserController] Error al crear usuario: juan3e1 - Duplicate entry 'juan3e1' for key 'users.username'
+[2025-11-22 12:33:12] [UserController] Usuario creado: juan3e11456e5a2-ee12-4eca-86e1-2d696de93eab
+[2025-11-22 12:33:12] [UserController] Error al crear usuario: juan3e11456e5a2-ee12-4eca-86e1-2d696de93eab - Duplicate entry 'juan3e11456e5a2-ee12-4eca-86e1-2d696de93eab' for key 'users.username'
+[2025-11-22 12:33:12] [UserController] Usuario aprobado: juan3e11456e5a2-ee12-4eca-86e1-2d696de93eab (ID: 24)
+[2025-11-22 12:33:12] [UserController] Usuario creado: maria0791b64a-383e-4b28-a3a3-1ee6f5975f78
+[2025-11-22 12:33:12] [UserController] Usuario aprobado: maria0791b64a-383e-4b28-a3a3-1ee6f5975f78 (ID: 26)
+[2025-11-22 12:38:22] [UserController] Usuario creado: juan3e177a780c0-035f-44e6-8e58-fc7fbbd26c2f
+[2025-11-22 12:38:22] [UserController] Usuario aprobado: juan3e177a780c0-035f-44e6-8e58-fc7fbbd26c2f (ID: 27)
+[2025-11-22 12:38:22] [UserController] Usuario creado: mariabd47a198-d1be-4039-b53a-b5340880ad1e
+[2025-11-22 12:38:22] [UserController] Usuario aprobado: mariabd47a198-d1be-4039-b53a-b5340880ad1e (ID: 28)
+[2025-11-22 12:40:23] [UserController] Usuario creado: juan3e1006977e9-86c9-409d-a18c-5937a9208650
+[2025-11-22 12:40:23] [UserController] Usuario aprobado: juan3e1006977e9-86c9-409d-a18c-5937a9208650 (ID: 29)
+[2025-11-22 12:40:23] [UserController] Usuario creado: mariae2eb616f-54f5-4f76-b183-8f9bdc306af4
+[2025-11-22 12:40:24] [UserController] Usuario aprobado: mariae2eb616f-54f5-4f76-b183-8f9bdc306af4 (ID: 30)
+[2025-11-22 12:40:24] [MessageController] Mensaje enviado de juan3e1006977e9-86c9-409d-a18c-5937a9208650 a mariae2eb616f-54f5-4f76-b183-8f9bdc306af4: ¡Hola Maria! Este es un mensaj...
+[2025-11-22 12:40:24] [MessageController] Obtenidos 1 mensajes para usuario ID: 29

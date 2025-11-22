@@ -1,17 +1,20 @@
 package com.proyect.domain;
 
 import com.proyect.domain.interfaces.Content;
-import java.util.Date;
+
+import java.sql.Timestamp;
+import java.util.List;
 
 public class Message {
     private int id;
     private User sender;
+    private Session sessionSender;
     private User receiver;
+    private List<Session> sessionsReceived;
     private Content content;
-    private Date date;
+    private Timestamp date;
 
     public Message() {
-
     }
 
     public int getId() {
@@ -46,11 +49,27 @@ public class Message {
         this.content = content;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public Session getSessionSender() {
+        return sessionSender;
+    }
+
+    public void setSessionSender(Session sessionSender) {
+        this.sessionSender = sessionSender;
+    }
+
+    public List<Session> getSessionsReceived() {
+        return sessionsReceived;
+    }
+
+    public void setSessionsReceived(List<Session> sessionsReceived) {
+        this.sessionsReceived = sessionsReceived;
+    }
+
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 }

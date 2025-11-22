@@ -4,6 +4,7 @@ public class User {
     private int id;
     private String username;
     private String password;
+    private boolean accepted;
 
     public int getId() {
         return id;
@@ -26,5 +27,22 @@ public class User {
     }
     public String getPassword() {
         return password;
+    }
+    public boolean getAccepted() {
+        return accepted;
+    }
+
+    public void setAccepted(boolean accepted) {
+        this.accepted = accepted;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", accepted=" + accepted +
+                '}';
     }
 }

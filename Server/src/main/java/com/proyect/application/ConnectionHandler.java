@@ -13,9 +13,10 @@ public class ConnectionHandler implements Runnable {
     private final Socket socket;
     private final ServerController server;
     private final Logger logger;
+    private final String className;
     private BufferedReader in;
     private PrintWriter out;
-    private final String clientKey;
+    private String clientKey;
     private Session session;
     private boolean loggedIn;
     private ConcurrentHashMap<String, ConnectionHandler> sessions;
@@ -25,7 +26,7 @@ public class ConnectionHandler implements Runnable {
         this.socket = socket;
         this.server = ExternalFactory.getServerController();
         this.logger = ExternalFactory.getLogger();
-        this.clientKey = socket.getInetAddress().getHostAddress() + ":" + socket.getPort();
+        this.className = this.getClass().getSimpleName();
         this.sessions = server.getSessions();
         this.loggedIn = false;
         this.communicationHandler = ExternalFactory.getCommunicationHandler(this);
@@ -37,7 +38,7 @@ public class ConnectionHandler implements Runnable {
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             out = new PrintWriter(socket.getOutputStream(), true);
 
-            logger.logAccion(" Conexion establecida - ID: " + clientKey);
+            logger.logAccion(" Conexion establecida - ID: " + clientKey, className);
             out.println("Conexión establecida con el servidor.");
 
             String message;
@@ -46,7 +47,7 @@ public class ConnectionHandler implements Runnable {
             }
 
         } catch (IOException e) {
-            logger.logAccion("Error en sesión " + clientKey + ": " + e.getMessage());
+            logger.logAccion("Error en sesión " + clientKey + ": " + e.getMessage(), className);
         } finally {
             close();
         }
@@ -62,9 +63,9 @@ public class ConnectionHandler implements Runnable {
                 socket.close();
             }
             server.removeSession(clientKey);
-            logger.logAccion("Sesión cerrada: " + clientKey);
+            logger.logAccion("Sesión cerrada: " + clientKey, className);
         } catch (IOException e) {
-            logger.logAccion("Error al cerrar sesión " + clientKey + ": " + e.getMessage());
+            logger.logAccion("Error al cerrar sesión " + clientKey + ": " + e.getMessage(), className);
         }
     }
 }

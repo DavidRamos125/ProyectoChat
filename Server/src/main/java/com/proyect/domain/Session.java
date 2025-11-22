@@ -1,12 +1,19 @@
 package com.proyect.domain;
 
-import java.util.Date;
+import java.sql.Timestamp;
+import java.util.UUID;
 
 public class Session {
     private String id;
     private User user;
     private String ip;
-    private Date ConnectionTime;
+    private String status;
+    private Timestamp connectionTime;
+    private Timestamp disconnectionTime;
+
+    public Session() {
+        this.id = "session-" + UUID.randomUUID();
+    }
 
     public String getId() {
         return id;
@@ -32,12 +39,20 @@ public class Session {
         this.ip = ip;
     }
 
-    public Date getConnectionTime() {
-        return ConnectionTime;
+    public Timestamp getConnectionTime() {
+        return connectionTime;
     }
 
-    public void setConnectionTime(Date ConnectionTime) {
-        this.ConnectionTime = ConnectionTime;
+    public void setConnectionTime(Timestamp ConnectionTime) {
+        this.connectionTime = ConnectionTime;
+    }
+
+    public Timestamp getDisconnectionTime() {
+        return disconnectionTime;
+    }
+
+    public void setDisconnectionTime(Timestamp DisconnectionTime) {
+        this.disconnectionTime = DisconnectionTime;
     }
 
     public String getStatus() {
@@ -47,7 +62,15 @@ public class Session {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Session{" +
+                "id='" + id + '\'' +
+                ", user=" + user +
+                ", ip='" + ip + '\'' +
+                ", connectionTime=" + connectionTime +
+                ", disconnectionTime=" + disconnectionTime +
+                '}';
+    }
 }

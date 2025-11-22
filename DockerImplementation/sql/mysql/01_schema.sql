@@ -19,10 +19,13 @@ CREATE TABLE messages (
     id INT PRIMARY KEY AUTO_INCREMENT,
     sender_id INT NOT NULL,
     receiver_id INT NOT NULL,
-    content_type VARCHAR(10) NOT NULL,  -- TEXT / FILE
+    session_sender_id VARCHAR(50) NOT NULL,
+    content_type VARCHAR(10) NOT NULL,   -- TEXT / FILE
     date DATETIME NOT NULL,
+
     FOREIGN KEY (sender_id) REFERENCES users(id),
-    FOREIGN KEY (receiver_id) REFERENCES users(id)
+    FOREIGN KEY (receiver_id) REFERENCES users(id),
+    FOREIGN KEY (session_sender_id) REFERENCES sessions(id)
 );
 
 CREATE TABLE message_receivers (

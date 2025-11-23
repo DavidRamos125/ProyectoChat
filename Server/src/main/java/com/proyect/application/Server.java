@@ -6,7 +6,10 @@ import com.proyect.util.Config;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 
 public class Server implements Runnable {
@@ -91,4 +94,15 @@ public class Server implements Runnable {
             logger.logAccion("se ha detenido el servidor: " + e.getMessage(), className);
         }
     }
+
+    public List<ConnectionHandler> getConnectedUsers() {
+        return new ArrayList<>(sessions.values());
+    }
+
+    public List<ConnectionHandler> getConnectionsByUserId(int userId) {
+        return sessions.values().stream()
+                .filter(conn -> conn.getCurrentUser() != null && conn.getCurrentUser().getId() == userId)
+                .collect(Collectors.toList());
+    }
+
 }

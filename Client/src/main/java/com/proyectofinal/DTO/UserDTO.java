@@ -1,4 +1,4 @@
-package com.proyect.DTO;
+package com.proyectofinal.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

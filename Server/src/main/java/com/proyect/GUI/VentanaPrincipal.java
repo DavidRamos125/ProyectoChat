@@ -1,24 +1,25 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package com.proyect.GUI;
 
+import com.proyect.DTO.UserDTO;
 import com.proyect.controller.ServerController;
+import com.proyect.controller.UserController;
+import com.proyect.domain.interfaces.IObserver;
 import com.proyect.factory.ExternalFactory;
 
-/**
- *
- * @author USUARIO
- */
-public class VentanaPrincipal extends javax.swing.JFrame {
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
-    /**
-     * Creates new form VentanaPrincipal
-     */
-    public VentanaPrincipal() {
+public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
+
+    private VentanaPrincipal() {
+        pends = new ArrayList<>();
+        modelPends = new DefaultListModel<>();
         initComponents();
-        serverController=ExternalFactory.getServerController();
+        serverController = ExternalFactory.getServerController();
+        userController = ExternalFactory.getUserController();
+
+        loadPends();
     }
 
     /**
@@ -33,8 +34,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         BTNIniciarServidor = new javax.swing.JButton();
         BTNDetenerServidor = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listaUsuarios = new javax.swing.JList<>();
+        ScrollPaneConectados = new javax.swing.JScrollPane();
+        ListUsersConected = new javax.swing.JList<>();
+        ScrollPanePendientes = new javax.swing.JScrollPane();
+        ListPendientes = new javax.swing.JList<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,43 +60,69 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        listaUsuarios.setModel(new javax.swing.AbstractListModel<String>() {
-            final String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+        ListUsersConected.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        ScrollPaneConectados.setViewportView(ListUsersConected);
+
+        ListPendientes.setModel(modelPends);
+        ScrollPanePendientes.setViewportView(ListPendientes);
+
+        jLabel2.setText("Usuarios no aceptados");
+
+        jLabel3.setText("Usuarios conectados");
+
+        jButton1.setText("Aceptar usuarios seleccionados");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
         });
-        jScrollPane1.setViewportView(listaUsuarios);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(165, 165, 165)
+                .addGap(238, 238, 238)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BTNIniciarServidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BTNDetenerServidor))
-                .addGap(17, 17, 17))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ScrollPaneConectados)
+                            .addComponent(ScrollPanePendientes)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+                                .addComponent(jButton1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(BTNIniciarServidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BTNDetenerServidor, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(17, 17, 17))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BTNIniciarServidor)
-                        .addGap(18, 18, 18)
-                        .addComponent(BTNDetenerServidor))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(BTNIniciarServidor)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTNDetenerServidor)
+                    .addComponent(jLabel2)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(ScrollPanePendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ScrollPaneConectados, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -104,13 +136,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         serverController.stop();
     }//GEN-LAST:event_BTNDetenerServidorActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        List<UserDTO> usersAccepted = ListPendientes.getSelectedValuesList();
+        if(!usersAccepted.isEmpty()){
+            for(UserDTO userDTO : usersAccepted){
+                userController.approveUser(userDTO.getId());
+                modelPends.removeElement(userDTO);
+            }
+        }
+
+    }//GEN-LAST:event_jButton1MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTNDetenerServidor;
     private javax.swing.JButton BTNIniciarServidor;
+    private javax.swing.JList<UserDTO> ListPendientes;
+    private javax.swing.JList<String> ListUsersConected;
+    private javax.swing.JScrollPane ScrollPaneConectados;
+    private javax.swing.JScrollPane ScrollPanePendientes;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JList<String> listaUsuarios;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
-    private final ServerController serverController;
+    private ServerController serverController;
+    private static VentanaPrincipal instance;
+    private UserController userController;
+    private List<UserDTO> pends;
+    private DefaultListModel<UserDTO> modelPends;
+
+    public static VentanaPrincipal getInstance() {
+        if (instance == null) {
+            instance = new VentanaPrincipal();
+        }
+        return instance;
+    }
+
+    @Override
+    public void update(String update) {
+
+    }
+
+    private void loadPends() {
+        pends = userController.getNonAcceptedUsers();
+        if (pends.size() > 0) {
+            modelPends.clear();
+            for (UserDTO userDTO : pends) {
+                modelPends.addElement(userDTO);
+            }
+        }
+    }
 }

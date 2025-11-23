@@ -5,10 +5,15 @@ import com.proyect.application.CommunicationHandler;
 import com.proyect.application.ConnectionHandler;
 import com.proyect.application.Logger;
 import com.proyect.application.Server;
+import com.proyect.controller.MessageController;
 import com.proyect.controller.ServerController;
+import com.proyect.controller.UserController;
+import com.proyect.domain.interfaces.IObserver;
 
 import java.io.IOException;
 import java.net.ServerSocket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ExternalFactory {
 
@@ -37,6 +42,18 @@ public class ExternalFactory {
     }
 
     public static VentanaPrincipal getVentanaPrincipal() {
-        return new VentanaPrincipal();
+        return VentanaPrincipal.getInstance();
+    }
+
+    public static void setObserversCommunicationHandler(CommunicationHandler communicationHandler) {
+        communicationHandler.add(getVentanaPrincipal());
+    }
+
+    public static UserController getUserController() {
+        return new UserController();
+    }
+
+    public static MessageController getMessageController() {
+        return new MessageController();
     }
 }

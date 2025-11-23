@@ -137,34 +137,27 @@ public class UserController {
         }
     }
 
-    /**
-     * Método de login que recibe un UserDTO con username y password
-     */
     public UserDTO login(UserDTO loginDTO) {
         try {
-            // Validar campos obligatorios
+
             if (loginDTO.getUsername() == null || loginDTO.getPassword() == null) {
                 logger.logAccion("Intento de login con campos faltantes", className);
                 return null;
             }
 
-            // Buscar usuario por username
             Optional<User> userOpt = userDAO.findByUsername(loginDTO.getUsername());
 
             if (userOpt.isEmpty()) {
                 logger.logAccion("Intento de login con usuario inexistente: " + loginDTO.getUsername(), className);
                 return null;
             }
-
             User user = userOpt.get();
 
-            // Verificar contraseña
             if (!user.getPassword().equals(loginDTO.getPassword())) {
                 logger.logAccion("Intento de login con contraseña incorrecta para: " + loginDTO.getUsername(), className);
                 return null;
             }
 
-            // Verificar si el usuario está aceptado
             if (!user.getAccepted()) {
                 logger.logAccion("Intento de login de usuario no aceptado: " + loginDTO.getUsername(), className);
                 return null;
@@ -179,13 +172,4 @@ public class UserController {
         }
     }
 
-    /**
-     * Obtener todos los usuarios (si tuvieras un método findAll en UserDAO)
-     */
-    public List<UserDTO> getAllUsers() {
-        // Este método necesitaría un findAll en UserDAO
-        // Por ahora, lo dejamos como ejemplo de cómo se convertiría una lista
-        logger.logAccion("Método getAllUsers no implementado", className);
-        return List.of();
-    }
 }

@@ -1,5 +1,6 @@
 package com.proyectofinal.application;
 
+import com.proyectofinal.DTO.ChatManager;
 import com.proyectofinal.DTO.UserDTO;
 import com.proyectofinal.DTO.MessageDTO;
 import com.proyectofinal.util.JSONBuilder;
@@ -7,6 +8,8 @@ import com.proyectofinal.util.JSONUtil;
 
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SessionHandler {
     private Socket socket;
@@ -56,9 +59,6 @@ public class SessionHandler {
         }).start();
     }
 
-    // --------------------------------------------------------------
-    //  LOGIN  →  action + user (solo username y password)
-    // --------------------------------------------------------------
     public void sendLogin(String username, String password) {
         UserDTO dto = new UserDTO();
         dto.setUsername(username);
@@ -71,9 +71,6 @@ public class SessionHandler {
         send(loginMessage);
     }
 
-    // --------------------------------------------------------------
-    //  REGISTER
-    // --------------------------------------------------------------
     public void sendRegister(String username, String password) {
         UserDTO dto = new UserDTO();
         dto.setUsername(username);
@@ -81,14 +78,11 @@ public class SessionHandler {
 
         String registerMessage = JSONBuilder.create()
                 .add("action", "REGISTER")
-                .add("user", dto)               // <-- DTO bajo la clave "user"
+                .add("user", dto)               
                 .build();
         send(registerMessage);
     }
 
-    // --------------------------------------------------------------
-    //  LOGOUT (solo action)
-    // --------------------------------------------------------------
     public void sendLogout() {
         String logoutMessage = JSONBuilder.create()
                 .add("action", "LOGOUT")
@@ -97,11 +91,8 @@ public class SessionHandler {
         currentUser = null;
     }
 
-    // --------------------------------------------------------------
-    //  RECEPCIÓN DE MENSAJES (uso de getDTO)
-    // --------------------------------------------------------------
     private void processMessage(String message) {
-        System.out.println("📥 Mensaje recibido: " + message);
+        System.out.println("Mensaje recibido: " + message);
         try {
             String action = JSONUtil.getProperty(message, "action");
             if (action == null) {
@@ -133,26 +124,50 @@ public class SessionHandler {
         }
     }
 
-    // --------------------------------------------------------------
-    //  LOGIN_SUCCESS → contiene "user" (UserDTO) + otros campos (sessionId,…)
-    // --------------------------------------------------------------
-    private void handleLoginSuccess(String message) {
+    private void handleLoginSuccess(String jsonMessage) {
         try {
-            UserDTO user = JSONUtil.JSONToObject(message, UserDTO.class);
-            this.currentUser = user;
+        String userJson = JSONUtil.getProperty(jsonMessage, "user");
+        UserDTO user = JSONUtil.JSONToObject(userJson, UserDTO.class);
+        currentUser = user;
+        
+        String messagesJson = JSONUtil.getProperty(jsonMessage, "messages");
+        List<MessageDTO> messages = JSONUtil.JSONToList(messagesJson, MessageDTO.class);
 
-            String sessionId = JSONUtil.getProperty(message, "sessionId");
-            System.out.println("✅ Login OK – Usuario: " +
-                    (user != null ? user.getUsername() : "unknown") +
-                    ", Sesión: " + sessionId);
-        } catch (Exception e) {
-            System.err.println("Error procesando login success: " + e.getMessage());
+        System.out.println("MENSAJES RECIBIDOS:");
+        for(MessageDTO m: messages) {
+            System.out.println("Mensaje recibido: " + m.toString());
         }
+        
+        
+        String connectedUsersJson = JSONUtil.getProperty(jsonMessage, "connectedUsers");
+        List<String> connectedUsernames = JSONUtil.JSONToList(connectedUsersJson, String.class);
+
+        System.out.println("Usuarios Conectados:");
+        for(String u: connectedUsernames) {
+            System.out.println("Usuario: " + u);
+        }
+        
+        ChatManager chatManager = new ChatManager(user.getUsername());
+        
+        chatManager.loadAllMessages(messages);
+        
+        List<UserDTO> connectedUsers = new ArrayList<>();
+        for (String username : connectedUsernames) {
+            if (!username.equals(user.getUsername())) {
+                UserDTO connectedUser = new UserDTO();
+                connectedUser.setUsername(username);
+                connectedUsers.add(connectedUser);
+            }
+        }
+        chatManager.loadAvailableUsers(connectedUsers);
+        
+        System.out.println("ChatManager inicializado para: " + user.getUsername());
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
     }
 
-    // --------------------------------------------------------------
-    //  NEW_MESSAGE → contiene "message" (MessageDTO) + "sender"
-    // --------------------------------------------------------------
     private void handleNewMessage(String message) {
         try {
             MessageDTO msg = JSONUtil.JSONToObject(message, MessageDTO.class);

@@ -323,3 +323,217 @@
 [2025-11-24 23:43:20] [ConnectionHandler] Error en conexión 127.0.0.1:64248: Connection reset
 [2025-11-24 23:43:20] [Server] Sesión eliminada: 127.0.0.1:64248
 [2025-11-24 23:43:20] [ConnectionHandler] Conexión cerrada: 127.0.0.1:64248
+[2025-11-24 23:56:28] [Server] Nueva conexión desde 127.0.0.1:53276
+[2025-11-24 23:56:28] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:53276
+[2025-11-24 23:56:32] [UserController] Intento de login con usuario inexistente: 
+[2025-11-24 23:56:32] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-24 23:58:12] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-24 23:58:15] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:58:20] [Server] Nueva conexión desde 127.0.0.1:56893
+[2025-11-24 23:58:20] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:56893
+[2025-11-24 23:58:29] [UserController] Login exitoso para: a
+[2025-11-24 23:58:29] [ConnectionHandler] Sesión creada para usuario: a
+[2025-11-24 23:58:29] [MessageController] Obtenidos 0 mensajes para usuario ID: 36
+[2025-11-24 23:58:29] [CommunicationHandler] Login exitoso: a
+[2025-11-25 00:00:02] [ConnectionHandler] Error en conexión 127.0.0.1:56893: Connection reset
+[2025-11-25 00:00:02] [ConnectionHandler] Sesión cerrada para usuario: a
+[2025-11-25 00:00:02] [Server] Sesión eliminada: 127.0.0.1:56893
+[2025-11-25 00:00:02] [ConnectionHandler] Conexión cerrada: 127.0.0.1:56893
+[2025-11-25 00:02:43] [Server] Nueva conexión desde 127.0.0.1:65091
+[2025-11-25 00:02:43] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:65091
+[2025-11-25 00:02:49] [UserController] Intento de login con contraseña incorrecta para: q
+[2025-11-25 00:02:49] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-25 00:03:35] [UserController] Intento de login con usuario inexistente: w
+[2025-11-25 00:03:35] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-25 00:10:19] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-25 00:10:20] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 00:10:37] [Server] Nueva conexión desde 127.0.0.1:55099
+[2025-11-25 00:10:37] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:55099
+[2025-11-25 00:10:39] [UserController] Error al crear usuario: q - Duplicate entry 'q' for key 'users.username'
+[2025-11-25 00:10:39] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-25 00:10:44] [UserController] Usuario creado: w
+[2025-11-25 00:10:44] [CommunicationHandler] Usuario registrado: w
+[2025-11-25 00:10:44] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 00:11:06] [UserController] Usuario aprobado: b (ID: 37)
+[2025-11-25 00:11:06] [UserController] Usuario aprobado: w (ID: 39)
+[2025-11-25 00:13:56] [UserController] Usuario creado: z
+[2025-11-25 00:13:56] [CommunicationHandler] Usuario registrado: z
+[2025-11-25 00:13:56] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-25 00:14:06] [UserController] Usuario creado: x
+[2025-11-25 00:14:06] [CommunicationHandler] Usuario registrado: x
+[2025-11-25 00:14:06] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 00:14:12] [UserController] Usuario aprobado: z (ID: 40)
+[2025-11-25 00:14:12] [UserController] Usuario aprobado: x (ID: 41)
+[2025-11-25 00:23:46] [UserController] Login exitoso para: z
+[2025-11-25 00:23:46] [ConnectionHandler] Sesión creada para usuario: z
+[2025-11-25 00:23:46] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 00:23:46] [CommunicationHandler] Login exitoso: z
+[2025-11-25 00:24:52] [ConnectionHandler] Error en conexión 127.0.0.1:55099: Connection reset
+[2025-11-25 00:24:52] [ConnectionHandler] Sesión cerrada para usuario: z
+[2025-11-25 00:24:52] [Server] Sesión eliminada: 127.0.0.1:55099
+[2025-11-25 00:24:52] [ConnectionHandler] Conexión cerrada: 127.0.0.1:55099
+[2025-11-25 01:42:37] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-25 01:43:19] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 01:43:19] [Server] Nueva conexión desde 127.0.0.1:60865
+[2025-11-25 01:43:19] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:60865
+[2025-11-25 01:43:20] [UserController] Usuario creado: p
+[2025-11-25 01:43:20] [CommunicationHandler] Usuario registrado: p
+[2025-11-25 01:43:20] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-25 01:43:38] [UserController] Usuario creado: no
+[2025-11-25 01:43:38] [CommunicationHandler] Usuario registrado: no
+[2025-11-25 01:43:38] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 01:43:47] [UserController] Login exitoso para: z
+[2025-11-25 01:43:47] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 01:43:47] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 01:43:47] [CommunicationHandler] Login exitoso: z
+[2025-11-25 01:50:06] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 01:50:22] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 01:51:18] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 01:51:18] [Server] Nueva conexión desde 127.0.0.1:59681
+[2025-11-25 01:51:18] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:59681
+[2025-11-25 01:51:30] [UserController] Login exitoso para: z
+[2025-11-25 01:51:30] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 01:51:30] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 01:51:30] [CommunicationHandler] Login exitoso: z
+[2025-11-25 01:51:55] [ConnectionHandler] Error en conexión 127.0.0.1:59681: Connection reset
+[2025-11-25 01:51:55] [Server] Sesión eliminada: 127.0.0.1:59681
+[2025-11-25 01:51:55] [ConnectionHandler] Conexión cerrada: 127.0.0.1:59681
+[2025-11-25 01:52:41] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 01:52:44] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 01:52:57] [Server] Nueva conexión desde 127.0.0.1:56095
+[2025-11-25 01:52:57] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:56095
+[2025-11-25 01:53:07] [UserController] Login exitoso para: z
+[2025-11-25 01:53:07] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 01:53:07] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 01:53:07] [CommunicationHandler] Login exitoso: z
+[2025-11-25 01:53:11] [Server] Sesión eliminada: 127.0.0.1:56095
+[2025-11-25 01:53:11] [ConnectionHandler] Conexión cerrada: 127.0.0.1:56095
+[2025-11-25 01:53:11] [CommunicationHandler] Logout: z
+[2025-11-25 01:53:11] [ConnectionHandler] Error en conexión 127.0.0.1:56095: Stream closed
+[2025-11-25 01:53:11] [Server] Sesión eliminada: 127.0.0.1:56095
+[2025-11-25 01:53:11] [ConnectionHandler] Conexión cerrada: 127.0.0.1:56095
+[2025-11-25 01:53:21] [Server] Nueva conexión desde 127.0.0.1:54366
+[2025-11-25 01:53:21] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:54366
+[2025-11-25 01:54:38] [ConnectionHandler] Error en conexión 127.0.0.1:54366: Connection reset
+[2025-11-25 01:54:38] [Server] Sesión eliminada: 127.0.0.1:54366
+[2025-11-25 01:54:38] [ConnectionHandler] Conexión cerrada: 127.0.0.1:54366
+[2025-11-25 02:03:07] [Server] Nueva conexión desde 127.0.0.1:53123
+[2025-11-25 02:03:07] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:53123
+[2025-11-25 02:03:08] [Server] Sesión eliminada: 127.0.0.1:53123
+[2025-11-25 02:03:08] [ConnectionHandler] Conexión cerrada: 127.0.0.1:53123
+[2025-11-25 02:03:08] [CommunicationHandler] Logout: unknown
+[2025-11-25 02:03:08] [ConnectionHandler] Error en conexión 127.0.0.1:53123: Stream closed
+[2025-11-25 02:03:08] [Server] Sesión eliminada: 127.0.0.1:53123
+[2025-11-25 02:03:08] [ConnectionHandler] Conexión cerrada: 127.0.0.1:53123
+[2025-11-25 02:03:40] [Server] Nueva conexión desde 127.0.0.1:55130
+[2025-11-25 02:03:40] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:55130
+[2025-11-25 02:03:41] [Server] Sesión eliminada: 127.0.0.1:55130
+[2025-11-25 02:03:41] [ConnectionHandler] Conexión cerrada: 127.0.0.1:55130
+[2025-11-25 02:03:41] [CommunicationHandler] Logout: unknown
+[2025-11-25 02:03:41] [ConnectionHandler] Error en conexión 127.0.0.1:55130: Stream closed
+[2025-11-25 02:03:41] [Server] Sesión eliminada: 127.0.0.1:55130
+[2025-11-25 02:03:41] [ConnectionHandler] Conexión cerrada: 127.0.0.1:55130
+[2025-11-25 02:03:42] [Server] Nueva conexión desde 127.0.0.1:55133
+[2025-11-25 02:03:42] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:55133
+[2025-11-25 02:03:43] [Server] Sesión eliminada: 127.0.0.1:55133
+[2025-11-25 02:03:43] [ConnectionHandler] Conexión cerrada: 127.0.0.1:55133
+[2025-11-25 02:08:02] [Server] Servidor detenido.
+[2025-11-25 02:08:02] [Server] se ha detenido el servidor: Socket closed
+[2025-11-25 03:30:28] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 03:30:31] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 03:30:36] [Server] Nueva conexión desde 127.0.0.1:55623
+[2025-11-25 03:30:36] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:55623
+[2025-11-25 03:30:47] [UserController] Login exitoso para: z
+[2025-11-25 03:30:47] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 03:30:47] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 03:30:47] [CommunicationHandler] Login exitoso: z
+[2025-11-25 03:31:30] [Server] Nueva conexión desde 127.0.0.1:52317
+[2025-11-25 03:31:30] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:52317
+[2025-11-25 03:31:37] [UserController] Login exitoso para: x
+[2025-11-25 03:31:37] [CommunicationHandler] Sesión creada para usuario: x
+[2025-11-25 03:31:37] [MessageController] Obtenidos 8 mensajes para usuario ID: 41
+[2025-11-25 03:31:37] [CommunicationHandler] Login exitoso: x
+[2025-11-25 03:32:07] [ConnectionHandler] Error en conexión 127.0.0.1:52317: Connection reset
+[2025-11-25 03:32:07] [Server] Sesión eliminada: 127.0.0.1:52317
+[2025-11-25 03:32:07] [ConnectionHandler] Conexión cerrada: 127.0.0.1:52317
+[2025-11-25 03:40:52] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 03:41:07] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 03:41:15] [Server] Nueva conexión desde 127.0.0.1:64403
+[2025-11-25 03:41:15] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:64403
+[2025-11-25 03:41:21] [UserController] Login exitoso para: z
+[2025-11-25 03:41:21] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 03:41:21] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 03:41:22] [CommunicationHandler] Login exitoso: z
+[2025-11-25 03:41:39] [Server] Nueva conexión desde 127.0.0.1:64423
+[2025-11-25 03:41:39] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:64423
+[2025-11-25 03:41:53] [UserController] Login exitoso para: x
+[2025-11-25 03:41:53] [CommunicationHandler] Sesión creada para usuario: x
+[2025-11-25 03:41:53] [MessageController] Obtenidos 8 mensajes para usuario ID: 41
+[2025-11-25 03:41:53] [CommunicationHandler] Login exitoso: x
+[2025-11-25 03:43:34] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 03:43:36] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 03:43:52] [Server] Nueva conexión desde 127.0.0.1:50812
+[2025-11-25 03:43:52] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:50812
+[2025-11-25 03:44:01] [UserController] Login exitoso para: z
+[2025-11-25 03:44:01] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 03:44:02] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 03:44:02] [CommunicationHandler] Login exitoso: z
+[2025-11-25 03:44:14] [Server] Nueva conexión desde 127.0.0.1:62180
+[2025-11-25 03:44:14] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:62180
+[2025-11-25 03:44:19] [UserController] Login exitoso para: x
+[2025-11-25 03:44:19] [CommunicationHandler] Sesión creada para usuario: x
+[2025-11-25 03:44:19] [MessageController] Obtenidos 8 mensajes para usuario ID: 41
+[2025-11-25 03:44:19] [CommunicationHandler] Login exitoso: x
+[2025-11-25 03:44:29] [ConnectionHandler] Error en conexión 127.0.0.1:62180: Connection reset
+[2025-11-25 03:44:29] [Server] Sesión eliminada: 127.0.0.1:62180
+[2025-11-25 03:44:29] [ConnectionHandler] Conexión cerrada: 127.0.0.1:62180
+[2025-11-25 03:51:38] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 03:51:40] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 03:51:59] [Server] Nueva conexión desde 127.0.0.1:49328
+[2025-11-25 03:52:00] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:49328
+[2025-11-25 03:53:24] [Server] Nueva conexión desde 127.0.0.1:59370
+[2025-11-25 03:53:24] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:59370
+[2025-11-25 03:53:31] [UserController] Login exitoso para: x
+[2025-11-25 03:53:31] [CommunicationHandler] Sesión creada para usuario: x
+[2025-11-25 03:53:31] [MessageController] Obtenidos 8 mensajes para usuario ID: 41
+[2025-11-25 03:53:31] [CommunicationHandler] Login exitoso: x
+[2025-11-25 03:53:45] [UserController] Login exitoso para: z
+[2025-11-25 03:53:45] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 03:53:45] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 03:53:45] [CommunicationHandler] Login exitoso: z
+[2025-11-25 03:54:12] [Server] Nueva conexión desde 127.0.0.1:56660
+[2025-11-25 03:54:12] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:56660
+[2025-11-25 03:54:17] [UserController] Login exitoso para: a
+[2025-11-25 03:54:17] [CommunicationHandler] Sesión creada para usuario: a
+[2025-11-25 03:54:17] [MessageController] Obtenidos 0 mensajes para usuario ID: 36
+[2025-11-25 03:54:17] [CommunicationHandler] Login exitoso: a
+[2025-11-25 03:54:35] [ConnectionHandler] Error en conexión 127.0.0.1:56660: Connection reset
+[2025-11-25 03:54:35] [Server] Sesión eliminada: 127.0.0.1:56660
+[2025-11-25 03:54:35] [ConnectionHandler] Conexión cerrada: 127.0.0.1:56660
+[2025-11-25 03:54:49] [ConnectionHandler] Error en conexión 127.0.0.1:49328: Connection reset
+[2025-11-25 03:54:49] [Server] Sesión eliminada: 127.0.0.1:49328
+[2025-11-25 03:54:49] [ConnectionHandler] Conexión cerrada: 127.0.0.1:49328
+[2025-11-25 03:55:01] [ConnectionHandler] Error en conexión 127.0.0.1:59370: Connection reset
+[2025-11-25 03:55:01] [Server] Sesión eliminada: 127.0.0.1:59370
+[2025-11-25 03:55:01] [ConnectionHandler] Conexión cerrada: 127.0.0.1:59370
+[2025-11-25 04:00:02] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-25 04:00:07] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 04:00:33] [Server] Servidor iniciado en el puerto 8083
+[2025-11-25 04:00:44] [Server] Nueva conexión desde 127.0.0.1:52585
+[2025-11-25 04:00:44] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:52585
+[2025-11-25 04:00:46] [UserController] Login exitoso para: z
+[2025-11-25 04:00:46] [CommunicationHandler] Sesión creada para usuario: z
+[2025-11-25 04:00:46] [MessageController] Obtenidos 8 mensajes para usuario ID: 40
+[2025-11-25 04:00:46] [CommunicationHandler] Login exitoso: z
+[2025-11-25 04:00:50] [Server] Nueva conexión desde 127.0.0.1:52591
+[2025-11-25 04:00:50] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:52591
+[2025-11-25 04:00:56] [UserController] Login exitoso para: x
+[2025-11-25 04:00:56] [CommunicationHandler] Sesión creada para usuario: x
+[2025-11-25 04:00:56] [MessageController] Obtenidos 8 mensajes para usuario ID: 41
+[2025-11-25 04:00:56] [CommunicationHandler] Login exitoso: x
+[2025-11-25 04:01:04] [ConnectionHandler] Error en conexión 127.0.0.1:52591: Connection reset
+[2025-11-25 04:01:04] [Server] Sesión eliminada: 127.0.0.1:52591
+[2025-11-25 04:01:04] [ConnectionHandler] Conexión cerrada: 127.0.0.1:52591
+[2025-11-25 04:01:05] [ConnectionHandler] Error en conexión 127.0.0.1:52585: Connection reset
+[2025-11-25 04:01:05] [Server] Sesión eliminada: 127.0.0.1:52585
+[2025-11-25 04:01:05] [ConnectionHandler] Conexión cerrada: 127.0.0.1:52585

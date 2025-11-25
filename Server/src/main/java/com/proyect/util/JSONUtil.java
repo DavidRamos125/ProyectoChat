@@ -20,7 +20,6 @@ public class JSONUtil {
         if (node.isValueNode()) {
             return node.asText();
         }
-        // Si es un objeto o array → devolver su JSON completo
         return mapper.writeValueAsString(node);
     } catch (Exception e) {
         throw new RuntimeException(

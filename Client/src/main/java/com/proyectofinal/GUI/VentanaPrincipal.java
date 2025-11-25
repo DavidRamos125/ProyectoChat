@@ -1,6 +1,6 @@
 package com.proyectofinal.GUI;
 
-import com.proyectofinal.DTO.UserDTO;
+import com.proyectofinal.DTO.ChatManager;
 import com.proyectofinal.controller.CommunicationController;
 import com.proyectofinal.factory.ExternalFactory;
 import com.proyectofinal.util.Encoder;
@@ -13,7 +13,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static VentanaPrincipal getInstance(){
         if(instance == null){
             instance = new VentanaPrincipal();
-            instance.setVisible(true);
         }
         return instance;
     }
@@ -48,7 +47,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         loginUsuario = new javax.swing.JButton();
         chatPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaUsuarios = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList2 = new javax.swing.JList<>();
         enviarMensajeTexto = new javax.swing.JButton();
@@ -179,18 +178,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Login", loginPanel);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listaUsuarios);
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
+        jList2.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(jList2);
 
         enviarMensajeTexto.setText("Enviar Mensaje");
@@ -250,11 +240,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTabbedPane1.addTab("Chat", chatPanel);
 
         status.setEditable(false);
-        status.setBackground(new java.awt.Color(102, 255, 102));
+        status.setBackground(new java.awt.Color(255, 51, 51));
         status.setText("Desconectado");
+        status.setFocusable(false);
 
         jTextField1.setEditable(false);
         jTextField1.setText("No loggeado");
+        jTextField1.setFocusable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -319,15 +311,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarUsuarioActionPerformed
 
     private void disconectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_disconectActionPerformed
-        //communicationController.disconnect();
+        communicationController.disconnect();
         disabled();
     }//GEN-LAST:event_disconectActionPerformed
 
     private void loginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginUsuarioActionPerformed
-        char[] password1 = passwordRegistro1.getPassword();
-        String username = usernameRegistro.getText();
+        char[] password = passwordLogin.getPassword();
+        String username = usernameLogin.getText();
 
-            String passwordEncode =  Encoder.encode(Arrays.toString(password1));
+            String passwordEncode =  Encoder.encode(Arrays.toString(password));
             communicationController.sendLogin(username, passwordEncode);
     }//GEN-LAST:event_loginUsuarioActionPerformed
 
@@ -336,6 +328,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         registrarUsuario.setEnabled(true);
         conect.setEnabled(false);
         disconect.setEnabled(true);
+        status.setBackground(new java.awt.Color(51, 255, 51));
     }
 
     private void disabled() {
@@ -343,6 +336,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         registrarUsuario.setEnabled(false);
         conect.setEnabled(true);
         disconect.setEnabled(false);
+        status.setBackground(new java.awt.Color(255, 51, 51));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -358,7 +352,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -366,6 +359,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JList<String> listaUsuarios;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JButton loginUsuario;
     private javax.swing.JPasswordField passwordLogin;
@@ -379,4 +373,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private CommunicationController communicationController;
     private static VentanaPrincipal instance;
+    private ChatManager chatManager;
+    
 }

@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 public class Server implements Runnable {
     private final int port;
     private ServerSocket serverSocket;
-    private final ConcurrentHashMap<String, ConnectionHandler> sessions = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<String, CommunicationHandler> sessions = new ConcurrentHashMap<>();
     private final Logger logger;
     private final String className;
     private volatile boolean running = false;
@@ -44,8 +44,8 @@ public class Server implements Runnable {
                 serverSocket.close();
             }
 
-            for (ConnectionHandler session : sessions.values()) {
-                session.close();
+            for (CommunicationHandler session : sessions.values()) {
+                session.logout();
             }
 
             logger.logAccion("Servidor detenido.", className);
@@ -60,14 +60,13 @@ public class Server implements Runnable {
         logger.logAccion("Sesión eliminada: " + clientKey, className);
     }
 
-    public ConcurrentHashMap<String, ConnectionHandler> getSessions() {
+    public ConcurrentHashMap<String, CommunicationHandler> getSessions() {
         return sessions;
     }
 
-    public Logger getLogger() {
-        return logger;
+    public void addSession(String clientKey, CommunicationHandler session) {
+        sessions.put(clientKey, session);
     }
-
 
     @Override
     public void run() {
@@ -95,13 +94,13 @@ public class Server implements Runnable {
         }
     }
 
-    public List<ConnectionHandler> getConnectedUsers() {
+    public List<CommunicationHandler> getConnectedUsers() {
         return new ArrayList<>(sessions.values());
     }
 
-    public List<ConnectionHandler> getConnectionsByUserId(int userId) {
+    public List<CommunicationHandler> getConnectionsByUserId(int userId) {
         return sessions.values().stream()
-                .filter(conn -> conn.getCurrentUser() != null && conn.getCurrentUser().getId() == userId)
+                .filter(conn -> conn!= null && conn.getCurrentUser().getId() == userId)
                 .collect(Collectors.toList());
     }
 

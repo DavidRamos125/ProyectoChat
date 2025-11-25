@@ -1,27 +1,34 @@
 package com.proyect.application;
 
+import com.proyect.DTO.SessionDTO;
 import com.proyect.controller.UserController;
 import com.proyect.controller.MessageController;
 import com.proyect.DTO.UserDTO;
 import com.proyect.DTO.MessageDTO;
-import com.proyect.domain.interfaces.IObservable;
+import com.proyect.domain.interfaces.IObservableConcrete;
 import com.proyect.domain.interfaces.IObserver;
+import com.proyect.domain.interfaces.IObserverConcrete;
 import com.proyect.factory.ExternalFactory;
 import com.proyect.util.JSONUtil;
 import com.proyect.util.JSONBuilder;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class CommunicationHandler implements IObservable{
-    private Logger logger;
+public class CommunicationHandler implements IObservableConcrete {
+    private final Logger logger;
     private ConnectionHandler connectionHandler;
     private UserController userController;
     private MessageController messageController;
     private Server server;
-    
-    private List<IObserver> observers;
+    private UserDTO currentUser;
+    private boolean loggedIn;
+
+    private List<IObserverConcrete> observers;
+    private SessionDTO currentSession;
 
     public CommunicationHandler(ConnectionHandler connectionHandler) {
         this.connectionHandler = connectionHandler;
@@ -33,10 +40,41 @@ public class CommunicationHandler implements IObservable{
         ExternalFactory.setObserversCommunicationHandler(this);
     }
 
+    public boolean createUserSession(UserDTO user) {
+        try {
+
+            this.currentSession = new SessionDTO();
+            this.currentSession.setUserId(user.getId());
+            this.currentSession.setId(generateSessionId(user.getId()));
+            this.currentSession.setIp(connectionHandler.getIp());
+            this.currentSession.setStatus("online");
+            this.currentSession.setConnectionTime(new Timestamp(System.currentTimeMillis()));
+            this.server.addSession(connectionHandler.getClientAddress(), this);
+
+            this.currentUser = user;
+            this.loggedIn = true;
+
+            logger.logAccion("Sesión creada para usuario: " + user.getUsername(), this.getClass().getSimpleName());
+            return true;
+
+        } catch (Exception e) {
+            logger.logAccion("Error creando sesión: " + e.getMessage(), this.getClass().getSimpleName());
+            return false;
+        }
+    }
+
+    private String generateSessionId(int id) {
+        return "sess_" + id + UUID.randomUUID();
+    }
+
+    public void sendMessage(String message) {
+        connectionHandler.send(message);
+    }
+
     public void handleMessage(String jsonMessage) {
         try {
             String action = JSONUtil.getProperty(jsonMessage, "action");
-            System.out.println("mensaje recibido:"+jsonMessage);
+            System.out.println("mensaje recibido:" + jsonMessage);
             switch (action) {
                 case "LOGIN":
                     handleLogin(jsonMessage);
@@ -51,7 +89,7 @@ public class CommunicationHandler implements IObservable{
                     break;
 
                 case "LOGOUT":
-                    handleLogout(jsonMessage);
+                    logout();
                     break;
 
                 default:
@@ -65,39 +103,41 @@ public class CommunicationHandler implements IObservable{
 
     private void handleLogin(String jsonMessage) {
         try {
-            String user = JSONUtil.getProperty(jsonMessage, "user");
-            System.out.println(">>"+user+"<<");
-            if (user == null) {
+            String userJSON = JSONUtil.getProperty(jsonMessage, "user");
+            if (userJSON== null) {
                 logger.logAccion("Login fallido - datos incompletos", this.getClass().getSimpleName());
                 return;
             }
 
-            UserDTO loginDTO = JSONUtil.JSONToObject(user, UserDTO.class);
-            System.out.println(">>"+loginDTO+"<<");
+            UserDTO loginDTO = JSONUtil.JSONToObject(userJSON, UserDTO.class);
             loginDTO = userController.login(loginDTO);
 
             if (loginDTO != null) {
-                connectionHandler.createUserSession(loginDTO);
+                createUserSession(loginDTO);
                 List<MessageDTO> userMessages = messageController.getMessagesByUser(loginDTO.getId());
 
                 List<String> connectedUsers = server.getConnectedUsers()
                         .stream()
-                        .map(conn -> {
-                            UserDTO connectedUser = conn.getCurrentUser();
-                            return connectedUser != null ? connectedUser.getUsername() : "unknown";
-                        })
+                        .map(conn -> conn.getCurrentUser())
+                        .filter(user -> user != null) // Filtrar usuarios nulos
+                        .filter(user -> !user.equals(currentUser)) // Excluir al usuario actual
+                        .map(UserDTO::getUsername)
+                        .filter(username -> username != null) // Filtrar usernames nulos
                         .distinct()
                         .collect(Collectors.toList());
 
+
+
                 String loginResponse = JSONBuilder.create()
                         .add("action", "LOGIN_SUCCESS")
-                        .add("user", user)
+                        .add("user", userJSON)
                         .add("messages", userMessages)
                         .add("connectedUsers", connectedUsers)
-                        .add("sessionId", connectionHandler.getCurrentSession().getId())
+                        .add("sessionId", currentSession.getId())
                         .build();
 
-                connectionHandler.sendMessage(loginResponse);
+                connectionHandler.send(loginResponse);
+                notifyLogin(currentUser);
                 logger.logAccion("Login exitoso: " + loginDTO.toString(), this.getClass().getSimpleName());
             } else {
                 logger.logAccion("Login fallido - usuario no aceptado: " + loginDTO.toString(), this.getClass().getSimpleName());
@@ -123,9 +163,9 @@ public class CommunicationHandler implements IObservable{
             logger.logAccion("Error registrando usuario: " + e.getMessage(), this.getClass().getSimpleName());
         }
     }
-    
+
     private void processMessage(String jsonMessage) {
-        if (!connectionHandler.isLoggedIn()) {
+        if (!loggedIn) {
             logger.logAccion("Intento de enviar mensaje sin login", this.getClass().getSimpleName());
             return;
         }
@@ -149,7 +189,7 @@ public class CommunicationHandler implements IObservable{
             }
 
             MessageDTO message = new MessageDTO();
-            message.setSender(connectionHandler.getCurrentUser());
+            message.setSender(currentUser);
             message.setReceiver(receiver);
             message.setType(messageType != null ? messageType : "TEXT");
 
@@ -163,21 +203,21 @@ public class CommunicationHandler implements IObservable{
             MessageDTO savedMessage = messageController.insertMessage(message);
 
             if (savedMessage != null) {
-                List<ConnectionHandler> receiverConnections = server.getConnectionsByUserId(receiver.getId());
+                List<CommunicationHandler> receiverConnections = server.getConnectionsByUserId(receiver.getId());
 
 
-                for (ConnectionHandler receiverConn : receiverConnections) {
+                for (CommunicationHandler receiverConn : receiverConnections) {
                     String messageNotification = JSONBuilder.create()
                             .add("action", "NEW_MESSAGE")
                             .add("message", savedMessage)
-                            .add("sender", connectionHandler.getCurrentUser().getUsername())
+                            .add("sender", currentUser.getUsername())
                             .build();
 
                     receiverConn.sendMessage(messageNotification);
                 }
 
                 logger.logAccion("Mensaje enviado de " +
-                        connectionHandler.getCurrentUser().getUsername() +
+                        currentUser.getUsername() +
                         " a " + receiverUsername, this.getClass().getSimpleName());
             }
 
@@ -186,12 +226,13 @@ public class CommunicationHandler implements IObservable{
         }
     }
 
-    private void handleLogout(String jsonMessage) {
+    public void logout() {
         try {
-            connectionHandler.logout();
+            notifyLogout(currentUser);
+            connectionHandler.close();
             logger.logAccion("Logout: " +
-                            (connectionHandler.getCurrentUser() != null ?
-                                    connectionHandler.getCurrentUser().getUsername() : "unknown"),
+                            (currentUser != null ?
+                                    currentUser.getUsername() : "unknown"),
                     this.getClass().getSimpleName());
 
         } catch (Exception e) {
@@ -199,16 +240,34 @@ public class CommunicationHandler implements IObservable{
         }
     }
 
+    public UserDTO getCurrentUser(){
+        return currentUser;
+    }
+
     @Override
     public void notify(String data) {
-        for(IObserver o :observers){
+        for (IObserver o : observers) {
             o.update(data);
         }
     }
 
     @Override
     public void add(IObserver o) {
-        observers.add(o);
+        observers.add((IObserverConcrete) o);
     }
 
+
+    @Override
+    public void notifyLogin(UserDTO user) {
+        for (IObserverConcrete o : observers) {
+            o.updateLogin(user);
+        }
+    }
+
+    @Override
+    public void notifyLogout(UserDTO user) {
+        for(IObserverConcrete o : observers){
+            o.updateLogout(user);
+        }
+    }
 }

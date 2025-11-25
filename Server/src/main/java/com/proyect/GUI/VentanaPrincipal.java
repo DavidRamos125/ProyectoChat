@@ -3,18 +3,20 @@ package com.proyect.GUI;
 import com.proyect.DTO.UserDTO;
 import com.proyect.controller.ServerController;
 import com.proyect.controller.UserController;
-import com.proyect.domain.interfaces.IObserver;
+import com.proyect.domain.interfaces.IObserverConcrete;
 import com.proyect.factory.ExternalFactory;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
+public class VentanaPrincipal extends javax.swing.JFrame implements IObserverConcrete {
 
     private VentanaPrincipal() {
         pends = new ArrayList<>();
         modelPends = new DefaultListModel<>();
+        conectados = new ArrayList<>();
+        modelConectados = new DefaultListModel<>();
         initComponents();
         serverController = ExternalFactory.getServerController();
         userController = ExternalFactory.getUserController();
@@ -40,7 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
         ListPendientes = new javax.swing.JList<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        BTNAceptarUsuarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,6 +62,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
             }
         });
 
+        ListUsersConected.setModel(modelConectados);
         ListUsersConected.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         ScrollPaneConectados.setViewportView(ListUsersConected);
 
@@ -70,10 +73,10 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
 
         jLabel3.setText("Usuarios conectados");
 
-        jButton1.setText("Aceptar usuarios seleccionados");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BTNAceptarUsuarios.setText("Aceptar usuarios seleccionados");
+        BTNAceptarUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                BTNAceptarUsuariosMouseClicked(evt);
             }
         });
 
@@ -98,7 +101,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
-                                .addComponent(jButton1)))
+                                .addComponent(BTNAceptarUsuarios)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(BTNIniciarServidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -115,7 +118,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTNDetenerServidor)
                     .addComponent(jLabel2)
-                    .addComponent(jButton1))
+                    .addComponent(BTNAceptarUsuarios))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ScrollPanePendientes, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23)
@@ -136,7 +139,7 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
         serverController.stop();
     }//GEN-LAST:event_BTNDetenerServidorActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void BTNAceptarUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNAceptarUsuariosMouseClicked
         List<UserDTO> usersAccepted = ListPendientes.getSelectedValuesList();
         if(!usersAccepted.isEmpty()){
             for(UserDTO userDTO : usersAccepted){
@@ -145,17 +148,17 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
             }
         }
 
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_BTNAceptarUsuariosMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNAceptarUsuarios;
     private javax.swing.JButton BTNDetenerServidor;
     private javax.swing.JButton BTNIniciarServidor;
     private javax.swing.JList<UserDTO> ListPendientes;
-    private javax.swing.JList<String> ListUsersConected;
+    private javax.swing.JList<UserDTO> ListUsersConected;
     private javax.swing.JScrollPane ScrollPaneConectados;
     private javax.swing.JScrollPane ScrollPanePendientes;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -165,12 +168,24 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
     private UserController userController;
     private List<UserDTO> pends;
     private DefaultListModel<UserDTO> modelPends;
+    private List<UserDTO> conectados;
+    private DefaultListModel<UserDTO> modelConectados;
 
     public static VentanaPrincipal getInstance() {
         if (instance == null) {
             instance = new VentanaPrincipal();
         }
         return instance;
+    }
+    
+        private void loadPends() {
+        pends = userController.getNonAcceptedUsers();
+        if (pends.size() > 0) {
+            modelPends.clear();
+            for (UserDTO userDTO : pends) {
+                modelPends.addElement(userDTO);
+            }
+        }
     }
 
     @Override
@@ -191,15 +206,13 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
 
     }
 
+    @Override
+    public void updateLogin(UserDTO user) {
+        modelConectados.addElement(user);
+    }
 
-
-    private void loadPends() {
-        pends = userController.getNonAcceptedUsers();
-        if (pends.size() > 0) {
-            modelPends.clear();
-            for (UserDTO userDTO : pends) {
-                modelPends.addElement(userDTO);
-            }
-        }
+    @Override
+    public void updateLogout(UserDTO user) {
+        modelConectados.removeElement(user);
     }
 }

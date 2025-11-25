@@ -34,10 +34,8 @@ public class Logger {
         String timestamp = LocalDateTime.now().format(formatter);
         String mensaje = String.format("[%s] [%s] %s", timestamp, ubicacion, accion);
 
-        // Mostrar en consola
         System.out.println(mensaje);
 
-        // Escribir en archivo
         try (FileWriter fw = new FileWriter(logFile, true);
              PrintWriter pw = new PrintWriter(fw)) {
             pw.println(mensaje);

@@ -94,10 +94,9 @@ public class UserDAO {
 
             try (ResultSet rs = ps.executeQuery()) {
                 if (!rs.next()) {
-                    return Optional.empty(); // Usuario no encontrado
+                    return Optional.empty();
                 }
 
-                // Crear el usuario a partir del ResultSet
                 User u = InternalFactory.getUser(
                         rs.getInt("id"),
                         rs.getString("username"),

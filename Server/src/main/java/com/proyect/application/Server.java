@@ -90,7 +90,7 @@ public class Server implements Runnable {
                 new Thread(session).start();
             }
         } catch (IOException e) {
-            logger.logAccion("se ha detenido el servidor: " + e.getMessage(), className);
+            logger.logAccion("se ha detenido el servicio de listening: " + e.getMessage(), className);
         }
     }
 
@@ -102,6 +102,12 @@ public class Server implements Runnable {
         return sessions.values().stream()
                 .filter(conn -> conn!= null && conn.getCurrentUser().getId() == userId)
                 .collect(Collectors.toList());
+    }
+
+    public int getCountSessions(int userId) {
+        return (int) sessions.values().stream()
+                .filter(conn -> conn!= null && conn.getCurrentUser().getId() == userId)
+                .count();
     }
 
 }

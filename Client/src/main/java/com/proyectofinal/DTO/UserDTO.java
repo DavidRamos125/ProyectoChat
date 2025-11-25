@@ -24,7 +24,6 @@ public class UserDTO {
         this.accepted = accepted;
     }
 
-    // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 

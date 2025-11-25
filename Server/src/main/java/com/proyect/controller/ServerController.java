@@ -25,7 +25,4 @@ public class ServerController {
         server.stop();
     }
 
-    public void removeSession(String clientKey) {
-        server.removeSession(clientKey);
-    }
 }

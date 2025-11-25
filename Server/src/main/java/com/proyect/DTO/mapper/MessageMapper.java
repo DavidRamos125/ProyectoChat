@@ -19,7 +19,6 @@ public class MessageMapper {
         dto.setSessionSender(SessionMapper.sessionToDTO(message.getSessionSender()));
         dto.setDate(message.getDate());
 
-        // Convertir sessions received
         if (message.getSessionsReceived() != null) {
             List<SessionDTO> sessionsDTO = message.getSessionsReceived()
                     .stream()
@@ -28,7 +27,7 @@ public class MessageMapper {
             dto.setSessionsReceived(sessionsDTO);
         }
 
-        // Contenido del mensaje
+
         Content content = message.getContent();
         if (content != null) {
             if (content.getType() == ContentType.TEXT) {
@@ -56,14 +55,12 @@ public class MessageMapper {
         message.setReceiver(UserMapper.dtoToUser(dto.getReceiver()));
         message.setDate(dto.getDate());
 
-        // Para sessionSender, necesitamos el User del sender
         if (dto.getSessionSender() != null && dto.getSender() != null) {
             User senderUser = UserMapper.dtoToUser(dto.getSender());
             Session sessionSender = SessionMapper.dtoToSession(dto.getSessionSender(), senderUser);
             message.setSessionSender(sessionSender);
         }
 
-        // Para sessionsReceived, necesitamos el User del receiver para cada sesión
         if (dto.getSessionsReceived() != null && dto.getReceiver() != null) {
             User receiverUser = UserMapper.dtoToUser(dto.getReceiver());
             List<Session> sessions = dto.getSessionsReceived()
@@ -73,7 +70,6 @@ public class MessageMapper {
             message.setSessionsReceived(sessions);
         }
 
-        // Contenido del mensaje
         if ("TEXT".equals(dto.getType())) {
             TextContent textContent = new TextContent();
             textContent.setText(dto.getTextContent());
@@ -81,7 +77,7 @@ public class MessageMapper {
         } else if ("FILE".equals(dto.getType())) {
             FileContent fileContent = new FileContent();
             fileContent.setName(dto.getFileName());
-            fileContent.setData(dto.getFileData()); // Esto también establece el tamaño
+            fileContent.setData(dto.getFileData());
             message.setContent(fileContent);
         }
 

@@ -27,10 +27,7 @@ public class UserController {
         try {
             User user = UserMapper.dtoToUser(userDTO);
             user.setAccepted(false);
-            // Usar el DAO para insertar
             userDAO.insert(user);
-
-            // Log de la acción
             logger.logAccion("Usuario creado: " + user.getUsername(), className);
 
             return UserMapper.userToDTO(user);
@@ -41,29 +38,22 @@ public class UserController {
         }
     }
 
-    /**
-     * Aprobar un usuario por su ID
-     */
     public UserDTO approveUser(int userId) {
         try {
-            // Verificar que el usuario existe
             Optional<User> userOpt = userDAO.findById(userId);
             if (userOpt.isEmpty()) {
                 logger.logAccion("Intento de aprobar usuario no existente: " + userId, className);
                 return null;
             }
 
-            // Actualizar en la base de datos
             userDAO.updateStatus(userId, true);
 
-            // Obtener el usuario actualizado
-            User user = userOpt.get();
-            user.setAccepted(true); // Actualizar el objeto local
 
-            // Log de la acción
+            User user = userOpt.get();
+            user.setAccepted(true);
+
             logger.logAccion("Usuario aprobado: " + user.getUsername() + " (ID: " + userId + ")", className);
 
-            // Convertir a DTO y retornar
             return UserMapper.userToDTO(user);
 
         } catch (SQLException e) {
@@ -90,22 +80,17 @@ public class UserController {
         }
     }
 
-    /**
-     * Rechazar un usuario (marcar como no aceptado)
-     */
+
     public UserDTO rejectUser(int userId) {
         try {
-            // Verificar que el usuario existe
             Optional<User> userOpt = userDAO.findById(userId);
             if (userOpt.isEmpty()) {
                 logger.logAccion("Intento de rechazar usuario no existente: " + userId, className);
                 return null;
             }
 
-            // Actualizar en la base de datos
             userDAO.updateStatus(userId, false);
 
-            // Obtener el usuario actualizado
             User user = userOpt.get();
             user.setAccepted(false);
 
@@ -163,7 +148,7 @@ public class UserController {
                 return null;
             }
 
-            logger.logAccion("Login exitoso para: " + loginDTO.getUsername(), className);
+            logger.logAccion("credenciales validadas para: " + loginDTO.getUsername(), className);
             return UserMapper.userToDTO(user);
 
         } catch (SQLException e) {

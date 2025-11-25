@@ -42,7 +42,6 @@ public class MessageController {
             logger.logAccion("Mensaje enviado de " + messageDTO.getSender().getUsername() +
                     " a " + messageDTO.getReceiver().getUsername() + ": " + contentPreview, className);
 
-            // Retornar el DTO actualizado (con ID generado)
             return MessageMapper.messageToDTO(message);
 
         } catch (SQLException e) {
@@ -56,7 +55,6 @@ public class MessageController {
             List<Message> messages = messageDAO.getMessagesByUser(userId);
             logger.logAccion("Obtenidos " + messages.size() + " mensajes para usuario ID: " + userId, className);
 
-            // Convertir lista de Message a lista de MessageDTO
             return messages.stream()
                     .map(MessageMapper::messageToDTO)
                     .collect(Collectors.toList());
@@ -84,7 +82,6 @@ public class MessageController {
 
     public MessageDTO sendTextMessage(int senderId, int receiverId, String sessionSenderId, String text) {
         try {
-            // Obtener objetos de dominio
             User sender = userDAO.findById(senderId).orElse(null);
             User receiver = userDAO.findById(receiverId).orElse(null);
             Session sessionSender = sessionDAO.findById(sessionSenderId).orElse(null);

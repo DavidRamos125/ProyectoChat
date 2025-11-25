@@ -17,13 +17,13 @@ public class JSONUtil {
     try {
         JsonNode node = mapper.readTree(jsonString).path(property);
         if (node.isMissingNode()) {
-            return null;                     // no existe la clave
+            return null;
         }
-        // Si es un valor escalar (texto, número, boolean) → devolver su representación textual
+
         if (node.isValueNode()) {
             return node.asText();
         }
-        // Si es un objeto o array → devolver su JSON completo
+
         return mapper.writeValueAsString(node);
     } catch (Exception e) {
         throw new RuntimeException(

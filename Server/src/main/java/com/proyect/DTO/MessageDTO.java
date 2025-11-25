@@ -1,6 +1,7 @@
 package com.proyect.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class MessageDTO {
     private Timestamp date;
 
     // Constructores
-    public MessageDTO() {}
+    public MessageDTO() {
+    }
 
     public MessageDTO(int id, UserDTO sender, UserDTO receiver, SessionDTO sessionSender,
                       List<SessionDTO> sessionsReceived, String type, String textContent,
@@ -57,37 +59,93 @@ public class MessageDTO {
         this.date = date;
     }
 
-    // Getters y Setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    public int getId() {
+        return id;
+    }
 
-    public UserDTO getSender() { return sender; }
-    public void setSender(UserDTO sender) { this.sender = sender; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public UserDTO getReceiver() { return receiver; }
-    public void setReceiver(UserDTO receiver) { this.receiver = receiver; }
+    public UserDTO getSender() {
+        return sender;
+    }
 
-    public SessionDTO getSessionSender() { return sessionSender; }
-    public void setSessionSender(SessionDTO sessionSender) { this.sessionSender = sessionSender; }
+    public void setSender(UserDTO sender) {
+        sender.setPassword("");
+        this.sender = sender;
+    }
 
-    public List<SessionDTO> getSessionsReceived() { return sessionsReceived; }
-    public void setSessionsReceived(List<SessionDTO> sessionsReceived) { this.sessionsReceived = sessionsReceived; }
+    public UserDTO getReceiver() {
+        return receiver;
+    }
 
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
+    public void setReceiver(UserDTO receiver) {
+        receiver.setPassword("");
+        this.receiver = receiver;
+    }
 
-    public String getTextContent() { return textContent; }
-    public void setTextContent(String textContent) { this.textContent = textContent; }
+    public SessionDTO getSessionSender() {
+        return sessionSender;
+    }
 
-    public String getFileName() { return fileName; }
-    public void setFileName(String fileName) { this.fileName = fileName; }
+    public void setSessionSender(SessionDTO sessionSender) {
+        this.sessionSender = sessionSender;
+    }
 
-    public Long getFileSize() { return fileSize; }
-    public void setFileSize(Long fileSize) { this.fileSize = fileSize; }
+    public List<SessionDTO> getSessionsReceived() {
+        return sessionsReceived;
+    }
 
-    public byte[] getFileData() { return fileData; }
-    public void setFileData(byte[] fileData) { this.fileData = fileData; }
+    public void setSessionsReceived(List<SessionDTO> sessionsReceived) {
+        this.sessionsReceived = sessionsReceived;
+    }
 
-    public Timestamp getDate() { return date; }
-    public void setDate(Timestamp date) { this.date = date; }
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getTextContent() {
+        return textContent;
+    }
+
+    public void setTextContent(String textContent) {
+        this.textContent = textContent;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public Long getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Long fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public byte[] getFileData() {
+        return fileData;
+    }
+
+    public void setFileData(byte[] fileData) {
+        this.fileData = fileData;
+    }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
+    }
 }

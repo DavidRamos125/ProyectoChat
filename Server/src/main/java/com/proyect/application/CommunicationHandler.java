@@ -9,6 +9,7 @@ import com.proyect.domain.interfaces.IObservableConcrete;
 import com.proyect.domain.interfaces.IObserver;
 import com.proyect.domain.interfaces.IObserverConcrete;
 import com.proyect.factory.ExternalFactory;
+import com.proyect.util.Config;
 import com.proyect.util.JSONUtil;
 import com.proyect.util.JSONBuilder;
 
@@ -113,17 +114,22 @@ public class CommunicationHandler implements IObservableConcrete {
             loginDTO = userController.login(loginDTO);
 
             if (loginDTO != null) {
+                int conections = server.getCountSessions(loginDTO.getId());
+                int maxConections = Integer.parseInt(Config.getProperty("user.maxConnections"));
+
+                if(conections >= maxConections){
+                    logger.logAccion("Login fallido por cantidad de sesiones", this.getClass().getSimpleName());
+                    return;
+                }
                 createUserSession(loginDTO);
                 List<MessageDTO> userMessages = messageController.getMessagesByUser(loginDTO.getId());
 
                 List<String> connectedUsers = server.getConnectedUsers()
                         .stream()
                         .map(conn -> conn.getCurrentUser())
-                        .filter(user -> user != null) // Filtrar usuarios nulos
-                        .filter(user -> !user.equals(currentUser)) // Excluir al usuario actual
+                        .filter(user -> user != null)
+                        .filter(user -> !user.getUsername().equals(currentUser.getUsername()))
                         .map(UserDTO::getUsername)
-                        .filter(username -> username != null) // Filtrar usernames nulos
-                        .distinct()
                         .collect(Collectors.toList());
 
 
@@ -144,7 +150,7 @@ public class CommunicationHandler implements IObservableConcrete {
             }
 
         } catch (Exception e) {
-            logger.logAccion("Error en login: " + e.getMessage(), this.getClass().getSimpleName());
+            logger.logAccion("Error en login: credenciales invalidas" , this.getClass().getSimpleName());
         }
     }
 
@@ -194,12 +200,6 @@ public class CommunicationHandler implements IObservableConcrete {
             message.setType(messageType != null ? messageType : "TEXT");
 
 
-            if ("TEXT".equals(messageType)) {
-                // Para mensajes de texto, necesitamos crear el TextContent
-                // Esto depende de cómo esté estructurado tu MessageDTO
-            }
-
-            // Guardar en base de datos
             MessageDTO savedMessage = messageController.insertMessage(message);
 
             if (savedMessage != null) {

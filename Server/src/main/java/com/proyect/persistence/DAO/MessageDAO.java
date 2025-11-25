@@ -41,14 +41,12 @@ public class MessageDAO {
             }
         }
 
-        // Insertar contenido según el tipo
         if (m.getContent().getType() == ContentType.TEXT) {
             insertTextContent(m.getId(), (TextContent) m.getContent());
         } else {
             insertFileContent(m.getId(), (FileContent) m.getContent());
         }
 
-        // Insertar sesiones receptoras
         insertReceivers(m.getId(), m.getSessionsReceived());
     }
 
@@ -127,7 +125,7 @@ public class MessageDAO {
                     msg.setId(rs.getInt("msg_id"));
                     msg.setDate(rs.getTimestamp("msg_date"));
 
-                    // Sender user
+
                     User sender = new User();
                     sender.setId(rs.getInt("sender_id"));
                     sender.setUsername(rs.getString("sender_username"));
@@ -135,7 +133,7 @@ public class MessageDAO {
                     sender.setAccepted(rs.getBoolean("sender_accepted"));
                     msg.setSender(sender);
 
-                    // Receiver user
+
                     User receiver = new User();
                     receiver.setId(rs.getInt("receiver_id"));
                     receiver.setUsername(rs.getString("receiver_username"));
@@ -143,7 +141,7 @@ public class MessageDAO {
                     receiver.setAccepted(rs.getBoolean("receiver_accepted"));
                     msg.setReceiver(receiver);
 
-                    // Session sender
+
                     Session ss = new Session();
                     ss.setId(rs.getString("session_sender_id"));
                     ss.setIp(rs.getString("session_ip"));
@@ -152,11 +150,7 @@ public class MessageDAO {
                     ss.setStatus(rs.getString("session_status"));
                     ss.setUser(sender);
                     msg.setSessionSender(ss);
-
-                    // Content
                     msg.setContent(loadContent(id, rs.getString("content_type")));
-
-                    // Sessions received
                     msg.setSessionsReceived(loadReceivers(id));
                 }
             }
@@ -218,7 +212,6 @@ public class MessageDAO {
                     s.setDisconnectionTime(rs.getTimestamp("disconnection_time"));
                     s.setStatus(rs.getString("status"));
 
-                    // Cargar usuario de la sesión
                     User user = new User();
                     user.setId(rs.getInt("user_id"));
                     user.setUsername(rs.getString("username"));
@@ -273,7 +266,7 @@ public class MessageDAO {
                     msg.setId(rs.getInt("msg_id"));
                     msg.setDate(rs.getTimestamp("msg_date"));
 
-                    // Sender user
+
                     User sender = new User();
                     sender.setId(rs.getInt("sender_id"));
                     sender.setUsername(rs.getString("sender_username"));
@@ -281,7 +274,6 @@ public class MessageDAO {
                     sender.setAccepted(rs.getBoolean("sender_accepted"));
                     msg.setSender(sender);
 
-                    // Receiver user
                     User receiver = new User();
                     receiver.setId(rs.getInt("receiver_id"));
                     receiver.setUsername(rs.getString("receiver_username"));
@@ -289,7 +281,6 @@ public class MessageDAO {
                     receiver.setAccepted(rs.getBoolean("receiver_accepted"));
                     msg.setReceiver(receiver);
 
-                    // Session sender
                     Session ss = new Session();
                     ss.setId(rs.getString("session_sender_id"));
                     ss.setIp(rs.getString("session_ip"));
@@ -299,10 +290,8 @@ public class MessageDAO {
                     ss.setUser(sender);
                     msg.setSessionSender(ss);
 
-                    // Content
                     msg.setContent(loadContent(msg.getId(), rs.getString("content_type")));
 
-                    // Sessions received (cargar después para cada mensaje)
                     msg.setSessionsReceived(loadReceivers(msg.getId()));
 
                     messages.add(msg);

@@ -20,7 +20,6 @@ public class SessionMapper {
         return dto;
     }
 
-    // Método original (sin User)
     public static Session dtoToSession(SessionDTO dto) {
         if (dto == null) return null;
 
@@ -31,11 +30,10 @@ public class SessionMapper {
         session.setConnectionTime(dto.getConnectionTime());
         session.setDisconnectionTime(dto.getDisconnectionTime());
 
-        // Nota: El usuario no se establece aquí
+
         return session;
     }
 
-    // Nuevo método sobrecargado que acepta User
     public static Session dtoToSession(SessionDTO dto, User user) {
         if (dto == null) return null;
 

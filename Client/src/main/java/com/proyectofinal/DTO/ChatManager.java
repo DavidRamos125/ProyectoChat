@@ -38,7 +38,6 @@ public class ChatManager {
         
         for (UserDTO user : availableUsersList) {
             String username = user.getUsername();
-            // Solo añadimos si no es el usuario actual
             if (!username.equals(userActual)) {
                 userStatus.put(username, "available");
             }
@@ -83,7 +82,6 @@ public class ChatManager {
     public void userConnected(UserDTO user) {
         if (user != null && user.getUsername() != null) {
             String username = user.getUsername();
-            // Solo añadimos si no es el usuario actual
             if (!username.equals(userActual)) {
                 userStatus.put(username, "available");
             }
@@ -110,8 +108,7 @@ public class ChatManager {
         if (username == null || msg == null || username.equals(userActual)) return;
 
         List<MessageDTO> list = messagesByUser.computeIfAbsent(username, k -> new ArrayList<>());
-        
-        // Verificamos si el mensaje ya existe para evitar duplicados
+
         if (!containsMessage(list, msg)) {
             list.add(msg);
         }

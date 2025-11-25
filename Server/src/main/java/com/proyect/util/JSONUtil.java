@@ -15,7 +15,8 @@ public class JSONUtil {
     try {
         JsonNode node = mapper.readTree(jsonString).path(property);
         if (node.isMissingNode()) {
-            return null;                     // no existe la clave
+            return null;
+
         }
         if (node.isValueNode()) {
             return node.asText();

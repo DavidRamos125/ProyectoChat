@@ -85,10 +85,6 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserverCon
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(238, 238, 238)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -107,6 +103,10 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserverCon
                             .addComponent(BTNIniciarServidor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BTNDetenerServidor, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(17, 17, 17))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(238, 238, 238)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,11 +194,8 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserverCon
     case "NUEVO_PENDIENTE":
         loadPends();
         break;
-    case "":
-        // bloque
-        break;
-    default:
-        // opcional
+
+
 }
 
 

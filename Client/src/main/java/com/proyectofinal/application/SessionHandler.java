@@ -3,6 +3,7 @@ package com.proyectofinal.application;
 import com.proyectofinal.DTO.ChatManager;
 import com.proyectofinal.DTO.UserDTO;
 import com.proyectofinal.DTO.MessageDTO;
+import com.proyectofinal.factory.ExternalFactory;
 import com.proyectofinal.util.JSONBuilder;
 import com.proyectofinal.util.JSONUtil;
 
@@ -40,7 +41,7 @@ public class SessionHandler {
     public void send(String message) {
         if (output != null) {
             output.println(message);
-            System.out.println("📤 Mensaje enviado: " + message);
+            System.out.println("Mensaje enviado: " + message);
         }
     }
     
@@ -60,13 +61,11 @@ public class SessionHandler {
     }
 
     public void sendLogin(String username, String password) {
-        UserDTO dto = new UserDTO();
-        dto.setUsername(username);
-        dto.setPassword(password);
+        UserDTO dto = ExternalFactory.getUserDTO(username, password);
 
         String loginMessage = JSONBuilder.create()
                 .add("action", "LOGIN")
-                .add("user", dto)               // <-- DTO bajo la clave "user"
+                .add("user", dto)
                 .build();
         send(loginMessage);
     }
@@ -112,9 +111,6 @@ public class SessionHandler {
                     break;
                 case "USER_DISCONNECTED":
                     handleUserDisconnected(message);
-                    break;
-                case "SERVER_DISCONNECTED":
-                    // TODO
                     break;
                 default:
                     System.out.println("Acción no manejada: " + action);
@@ -173,7 +169,7 @@ public class SessionHandler {
             MessageDTO msg = JSONUtil.JSONToObject(message, MessageDTO.class);
             String sender = JSONUtil.getProperty(message, "sender");
             if (msg != null) {
-                System.out.println("💬 Nuevo mensaje de " + sender + ": " +
+                System.out.println("Nuevo mensaje de " + sender + ": " +
                         (msg.getTextContent() != null ? msg.getTextContent() : "Archivo"));
             }
         } catch (Exception e) {
@@ -183,12 +179,12 @@ public class SessionHandler {
 
     private void handleUserConnected(String message) {
         String username = JSONUtil.getProperty(message, "username");
-        System.out.println("👤 Usuario conectado: " + username);
+        System.out.println("Usuario conectado: " + username);
     }
 
     private void handleUserDisconnected(String message) {
         String username = JSONUtil.getProperty(message, "username");
-        System.out.println("👤 Usuario desconectado: " + username);
+        System.out.println("Usuario desconectado: " + username);
     }
 
 

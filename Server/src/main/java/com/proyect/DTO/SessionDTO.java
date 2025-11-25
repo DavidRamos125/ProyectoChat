@@ -22,7 +22,6 @@ public class SessionDTO {
     @JsonProperty("disconnectionTime")
     private Timestamp disconnectionTime;
 
-    // Constructores
     public SessionDTO() {}
 
     public SessionDTO(String id, int userId, String ip, String status,

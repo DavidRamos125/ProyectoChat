@@ -40,7 +40,7 @@ public class GeneralConection implements Conection{
             connection = DriverManager.getConnection(url, user, password);
             return connection;
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("No se encontró el driver JDBC de Oracle: " + driver, e);
+            throw new RuntimeException("No se encontró el driver JDBC: " + driver, e);
         } catch (SQLException e) {
             throw new RuntimeException("Error al conectar: " + url, e);
         }

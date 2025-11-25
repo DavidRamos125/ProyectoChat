@@ -2,7 +2,6 @@ package com.proyectofinal.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.sql.Timestamp;
-import java.util.List;
 
 public class MessageDTO {
     @JsonProperty("id")
@@ -13,12 +12,6 @@ public class MessageDTO {
 
     @JsonProperty("receiver")
     private UserDTO receiver;
-
-    @JsonProperty("sessionSender")
-    private SessionDTO sessionSender;
-
-    @JsonProperty("sessionsReceived")
-    private List<SessionDTO> sessionsReceived;
 
     @JsonProperty("type")
     private String type; // "TEXT" o "FILE"
@@ -41,14 +34,12 @@ public class MessageDTO {
     // Constructores
     public MessageDTO() {}
 
-    public MessageDTO(int id, UserDTO sender, UserDTO receiver, SessionDTO sessionSender,
-                      List<SessionDTO> sessionsReceived, String type, String textContent,
+    public MessageDTO(int id, UserDTO sender, UserDTO receiver,
+                      String type, String textContent,
                       String fileName, Long fileSize, byte[] fileData, Timestamp date) {
         this.id = id;
         this.sender = sender;
         this.receiver = receiver;
-        this.sessionSender = sessionSender;
-        this.sessionsReceived = sessionsReceived;
         this.type = type;
         this.textContent = textContent;
         this.fileName = fileName;
@@ -66,12 +57,6 @@ public class MessageDTO {
 
     public UserDTO getReceiver() { return receiver; }
     public void setReceiver(UserDTO receiver) { this.receiver = receiver; }
-
-    public SessionDTO getSessionSender() { return sessionSender; }
-    public void setSessionSender(SessionDTO sessionSender) { this.sessionSender = sessionSender; }
-
-    public List<SessionDTO> getSessionsReceived() { return sessionsReceived; }
-    public void setSessionsReceived(List<SessionDTO> sessionsReceived) { this.sessionsReceived = sessionsReceived; }
 
     public String getType() { return type; }
     public void setType(String type) { this.type = type; }

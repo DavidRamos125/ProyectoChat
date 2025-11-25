@@ -31,13 +31,9 @@ public class MessageController {
     }
     public MessageDTO insertMessage(MessageDTO messageDTO) {
         try {
-            // Convertir DTO a objeto de dominio
             Message message = MessageMapper.dtoToMessage(messageDTO);
-
-            // Insertar usando el DAO
             messageDAO.insert(message);
 
-            // Log de la acción
             String contentPreview = "TEXT".equals(messageDTO.getType()) ?
                     (messageDTO.getTextContent().length() > 30 ?
                             messageDTO.getTextContent().substring(0, 30) + "..." : messageDTO.getTextContent()) :
@@ -55,9 +51,6 @@ public class MessageController {
         }
     }
 
-    /**
-     * Obtener mensajes por usuario y devolver como lista de DTOs
-     */
     public List<MessageDTO> getMessagesByUser(int userId) {
         try {
             List<Message> messages = messageDAO.getMessagesByUser(userId);
@@ -74,9 +67,6 @@ public class MessageController {
         }
     }
 
-    /**
-     * Obtener un mensaje específico por su ID como DTO
-     */
     public MessageDTO getMessageById(int messageId) {
         try {
             Message message = messageDAO.findById(messageId);
@@ -92,9 +82,6 @@ public class MessageController {
         }
     }
 
-    /**
-     * Método de conveniencia para enviar mensaje de texto
-     */
     public MessageDTO sendTextMessage(int senderId, int receiverId, String sessionSenderId, String text) {
         try {
             // Obtener objetos de dominio
@@ -107,7 +94,6 @@ public class MessageController {
                 return null;
             }
 
-            // Crear MessageDTO
             MessageDTO messageDTO = new MessageDTO();
             messageDTO.setSender(UserMapper.userToDTO(sender));
             messageDTO.setReceiver(UserMapper.userToDTO(receiver));
@@ -116,7 +102,6 @@ public class MessageController {
             messageDTO.setTextContent(text);
             messageDTO.setDate(Timestamp.valueOf(LocalDateTime.now()));
 
-            // Usar el método principal de inserción
             return insertMessage(messageDTO);
 
         } catch (SQLException e) {

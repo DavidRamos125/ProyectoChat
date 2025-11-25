@@ -1,5 +1,6 @@
 package com.proyect.factory;
 
+import com.proyect.DTO.UserDTO;
 import com.proyect.GUI.VentanaPrincipal;
 import com.proyect.application.CommunicationHandler;
 import com.proyect.application.ConnectionHandler;
@@ -31,6 +32,10 @@ public class ExternalFactory {
 
     public static Logger getLogger() {
         return Logger.getInstance();
+    }
+
+    public static UserDTO getUserDTO() {
+        return new UserDTO();
     }
 
     public static ServerSocket getSocketServer(int port){

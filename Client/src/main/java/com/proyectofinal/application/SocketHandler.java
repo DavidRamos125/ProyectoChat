@@ -1,5 +1,6 @@
 package com.proyectofinal.application;
 
+import com.proyectofinal.factory.ExternalFactory;
 import com.proyectofinal.util.Config;
 
 import java.io.IOException;
@@ -9,7 +10,7 @@ public class SocketHandler {
     private String host;
     private int port;
     private Socket socket;
-    private MessageHandler messageHandler;
+    private SessionHandler sessionHandler;
     private boolean connected = false;
 
     public SocketHandler() {
@@ -20,12 +21,10 @@ public class SocketHandler {
     public boolean connect() {
         try {
             socket = new Socket(host, port);
-            messageHandler = new MessageHandler(socket);
+            sessionHandler = ExternalFactory.getSessionHandler(socket);
             connected = true;
             System.out.println("Conectado al servidor: " + host + ":" + port);
-
-            // Ejecutar recepción en un hilo aparte
-            new Thread(() -> messageHandler.listen()).start();
+            new Thread(() -> sessionHandler.listen()).start();
 
             return true;
         } catch (IOException e) {
@@ -35,19 +34,11 @@ public class SocketHandler {
         }
     }
 
-    public void sendMessage(String message) {
-        if (connected && messageHandler != null) {
-            messageHandler.send(message);
-        } else {
-            System.err.println("No hay conexión activa con el servidor.");
-        }
-    }
-
     public void disconnect() {
         try {
             connected = false;
-            if (messageHandler != null) {
-                messageHandler.close();
+            if (sessionHandler != null) {
+                sessionHandler.close();
             }
             if (socket != null && !socket.isClosed()) {
                 socket.close();
@@ -56,6 +47,10 @@ public class SocketHandler {
         } catch (IOException e) {
             System.err.println("Error al desconectarse: " + e.getMessage());
         }
+    }
+
+    public SessionHandler getSessionHandler() {
+        return sessionHandler;
     }
 
     public boolean isConnected() {

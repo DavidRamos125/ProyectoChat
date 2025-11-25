@@ -175,8 +175,23 @@ public class VentanaPrincipal extends javax.swing.JFrame implements IObserver {
 
     @Override
     public void update(String update) {
+        switch (update) {
+    case "NUEVO_PENDIENTE":
+        loadPends();
+        break;
+    case "":
+        // bloque
+        break;
+    default:
+        // opcional
+}
+
+
+
 
     }
+
+
 
     private void loadPends() {
         pends = userController.getNonAcceptedUsers();

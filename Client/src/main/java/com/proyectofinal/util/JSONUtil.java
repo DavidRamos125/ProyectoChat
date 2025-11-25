@@ -1,20 +1,47 @@
 package com.proyectofinal.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+
+import java.util.List;
 
 public class JSONUtil {
 
     private static final ObjectMapper mapper = new ObjectMapper()
-            .enable(SerializationFeature.INDENT_OUTPUT)
+            .disable(SerializationFeature.INDENT_OUTPUT)
             .configure(com.fasterxml.jackson.databind.DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     public static String getProperty(String jsonString, String property) {
+    try {
+        JsonNode node = mapper.readTree(jsonString).path(property);
+        if (node.isMissingNode()) {
+            return null;                     // no existe la clave
+        }
+        // Si es un valor escalar (texto, número, boolean) → devolver su representación textual
+        if (node.isValueNode()) {
+            return node.asText();
+        }
+        // Si es un objeto o array → devolver su JSON completo
+        return mapper.writeValueAsString(node);
+    } catch (Exception e) {
+        throw new RuntimeException(
+                "Error al obtener propiedad '" + property + "' del JSON", e);
+    }
+}
+
+
+    public static String getPropertyList(String jsonString, String property) {
         try {
-            return mapper.readTree(jsonString).path(property).asText();
+            JsonNode node = mapper.readTree(jsonString).path(property);
+            if (node.isMissingNode()) {
+                return null;
+            }
+            return node.toString();
         } catch (Exception e) {
-            throw new RuntimeException("Error al obtener propiedad '" + property + "' del JSON", e);
+            throw new RuntimeException(
+                    "Error al obtener propiedad '" + property + "' del JSON", e);
         }
     }
 
@@ -32,6 +59,18 @@ public class JSONUtil {
             return mapper.readValue(json, baseClass);
         } catch (JsonProcessingException e) {
             throw new RuntimeException("Error al convertir JSON a objeto", e);
+        }
+    }
+
+    public static <T> List<T> JSONToList(String jsonArray, Class<T> elementCls) {
+        try {
+            return mapper.readValue(
+                    jsonArray,
+                    mapper.getTypeFactory()
+                            .constructCollectionType(List.class, elementCls));
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(
+                    "Error al convertir JSON a List<" + elementCls.getSimpleName() + ">", e);
         }
     }
 }

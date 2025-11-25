@@ -57,8 +57,8 @@ public class ConnectionHandler implements Runnable {
         try {
 
             this.currentSession = new SessionDTO();
-            this.currentSession.setId(generateSessionId());
             this.currentSession.setUserId(user.getId());
+            this.currentSession.setId(generateSessionId(user.getId()));
             this.currentSession.setIp(clientAddress.split(":")[0]);
             this.currentSession.setStatus("online");
             this.currentSession.setConnectionTime(new Timestamp(System.currentTimeMillis()));
@@ -81,7 +81,7 @@ public class ConnectionHandler implements Runnable {
             currentSession.setDisconnectionTime(new Timestamp(System.currentTimeMillis()));
 
             logger.logAccion("Sesión cerrada para usuario: "
-                    + (currentUser != null ? currentUser.getUsername() : "unknown"),
+                            + (currentUser != null ? currentUser.getUsername() : "unknown"),
                     this.getClass().getSimpleName());
         }
         this.currentSession = null;
@@ -114,11 +114,10 @@ public class ConnectionHandler implements Runnable {
         }
     }
 
-    private String generateSessionId() {
-        return "sess_" + System.currentTimeMillis() + "_" + (int) (Math.random() * 1000);
+    private String generateSessionId(int id) {
+        return "sess_" + id + "-" + (int) (Math.random() * 1000);
     }
 
-    // Getters y Setters
     public SessionDTO getCurrentSession() {
         return currentSession;
     }
@@ -131,7 +130,4 @@ public class ConnectionHandler implements Runnable {
         return loggedIn;
     }
 
-    public String getClientAddress() {
-        return clientAddress;
-    }
 }

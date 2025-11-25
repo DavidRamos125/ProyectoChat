@@ -23,22 +23,4 @@ public class JSONBuilder {
     public static JSONBuilder create() {
         return new JSONBuilder();
     }
-
-
-    public static String error(String message) {
-        return create()
-                .add("status", "error")
-                .add("message", message)
-                .add("timestamp", System.currentTimeMillis())
-                .build();
-    }
-
-    public static String data(String key, Object data) {
-        return create()
-                .add("status", "success")
-                .add(key, data)
-                .add("timestamp", System.currentTimeMillis())
-                .build();
-    }
-
 }

@@ -112,3 +112,214 @@
 [2025-11-22 19:31:41] [UserController] Usuario aprobado: testUser_5cc3183d-3d5f-4f13-8cd4-4caec6e5560d (ID: 5)
 [2025-11-22 19:31:44] [Server] Servidor detenido.
 [2025-11-22 19:31:44] [Server] se ha detenido el servidor: Socket closed
+[2025-11-24 22:17:30] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:19:26] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:19:30] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 22:19:58] [Server] Nueva conexión desde 127.0.0.1:63168
+[2025-11-24 22:19:58] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:63168
+[2025-11-24 22:20:20] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:20:20] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:20:20] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:20:20] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:20:20] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:20:20] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:20:20] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:20:20] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:20:20] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:20:51] [Server] Servidor detenido.
+[2025-11-24 22:20:51] [Server] se ha detenido el servidor: Socket closed
+[2025-11-24 22:21:02] [ConnectionHandler] Error en conexión 127.0.0.1:63168: Connection reset
+[2025-11-24 22:21:02] [Server] Sesión eliminada: 127.0.0.1:63168
+[2025-11-24 22:21:02] [ConnectionHandler] Conexión cerrada: 127.0.0.1:63168
+[2025-11-24 22:25:28] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:25:33] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 22:25:42] [Server] Nueva conexión desde 127.0.0.1:62825
+[2025-11-24 22:25:42] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:62825
+[2025-11-24 22:26:09] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:26:09] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:26:09] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:26:09] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:26:09] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:26:09] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:26:09] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:26:09] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:26:09] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:28:34] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:28:34] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:28:34] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:28:34] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:28:34] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:28:34] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:28:34] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:28:34] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:28:34] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:30:12] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:30:15] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 22:30:30] [Server] Nueva conexión desde 127.0.0.1:50646
+[2025-11-24 22:30:30] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:50646
+[2025-11-24 22:30:47] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:30:47] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:30:47] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:30:47] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:30:47] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:30:47] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:30:47] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:30:47] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:30:47] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:35:12] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:35:14] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 22:35:30] [Server] Nueva conexión desde 127.0.0.1:50084
+[2025-11-24 22:35:30] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:50084
+[2025-11-24 22:35:33] [ConnectionHandler] Error en conexión 127.0.0.1:50084: Connection reset
+[2025-11-24 22:35:33] [Server] Sesión eliminada: 127.0.0.1:50084
+[2025-11-24 22:35:33] [ConnectionHandler] Conexión cerrada: 127.0.0.1:50084
+[2025-11-24 22:36:19] [Server] Nueva conexión desde 127.0.0.1:49454
+[2025-11-24 22:36:19] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:49454
+[2025-11-24 22:36:22] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:36:22] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:36:22] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:36:22] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:36:22] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:36:22] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:36:22] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:36:22] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:36:22] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:38:38] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:39:57] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 22:40:02] [Server] Nueva conexión desde 127.0.0.1:51427
+[2025-11-24 22:40:02] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:51427
+[2025-11-24 22:40:15] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:40:15] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:40:15] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:40:15] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:40:15] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:40:15] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:40:15] [CommunicationHandler] Acción desconocida: 
+[2025-11-24 22:40:15] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:40:15] [CommunicationHandler] Error procesando mensaje: Error al obtener propiedad 'action' del JSON
+[2025-11-24 22:41:12] [ConnectionHandler] Error en conexión 127.0.0.1:51427: Connection reset
+[2025-11-24 22:41:12] [Server] Sesión eliminada: 127.0.0.1:51427
+[2025-11-24 22:41:12] [ConnectionHandler] Conexión cerrada: 127.0.0.1:51427
+[2025-11-24 22:52:06] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:52:37] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 22:52:37] [Server] Nueva conexión desde 127.0.0.1:62925
+[2025-11-24 22:52:37] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:62925
+[2025-11-24 22:53:33] [ConnectionHandler] Error en conexión 127.0.0.1:62925: Connection reset
+[2025-11-24 22:53:33] [Server] Sesión eliminada: 127.0.0.1:62925
+[2025-11-24 22:53:33] [ConnectionHandler] Conexión cerrada: 127.0.0.1:62925
+[2025-11-24 22:54:02] [Server] Nueva conexión desde 127.0.0.1:54086
+[2025-11-24 22:54:02] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:54086
+[2025-11-24 22:54:15] [CommunicationHandler] Error registrando usuario: Error al convertir JSON a objeto
+[2025-11-24 22:59:04] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 22:59:05] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 22:59:08] [Server] Nueva conexión desde 127.0.0.1:64111
+[2025-11-24 22:59:08] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:64111
+[2025-11-24 22:59:17] [CommunicationHandler] Error registrando usuario: Error al convertir JSON a objeto
+[2025-11-24 23:01:54] [ConnectionHandler] Error en conexión 127.0.0.1:64111: Connection reset
+[2025-11-24 23:01:54] [Server] Sesión eliminada: 127.0.0.1:64111
+[2025-11-24 23:01:54] [ConnectionHandler] Conexión cerrada: 127.0.0.1:64111
+[2025-11-24 23:02:57] [Server] Servidor detenido.
+[2025-11-24 23:02:57] [Server] se ha detenido el servidor: Socket closed
+[2025-11-24 23:03:00] [Server] Servidor detenido.
+[2025-11-24 23:04:13] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:04:15] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:04:24] [Server] Nueva conexión desde 127.0.0.1:65112
+[2025-11-24 23:04:24] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:65112
+[2025-11-24 23:04:35] [UserController] Usuario creado: yesyesyes
+[2025-11-24 23:04:35] [CommunicationHandler] Usuario registrado: yesyesyes
+[2025-11-24 23:04:55] [ConnectionHandler] Error en conexión 127.0.0.1:65112: Connection reset
+[2025-11-24 23:04:55] [Server] Sesión eliminada: 127.0.0.1:65112
+[2025-11-24 23:04:55] [ConnectionHandler] Conexión cerrada: 127.0.0.1:65112
+[2025-11-24 23:14:22] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-24 23:14:27] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:14:32] [UserController] Usuario aprobado: yesyesyes (ID: 31)
+[2025-11-24 23:14:45] [Server] Nueva conexión desde 127.0.0.1:54002
+[2025-11-24 23:14:45] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:54002
+[2025-11-24 23:14:48] [UserController] Usuario creado: jejeje
+[2025-11-24 23:14:48] [CommunicationHandler] Usuario registrado: jejeje
+[2025-11-24 23:16:03] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-24 23:16:05] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:16:29] [Server] Nueva conexión desde 127.0.0.1:54065
+[2025-11-24 23:16:29] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:54065
+[2025-11-24 23:16:31] [UserController] Usuario creado: ya llegue
+[2025-11-24 23:16:31] [CommunicationHandler] Usuario registrado: ya llegue
+[2025-11-24 23:16:31] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-24 23:16:41] [UserController] Usuario aprobado: ya llegue (ID: 33)
+[2025-11-24 23:17:00] [UserController] Usuario creado: Q
+[2025-11-24 23:17:00] [CommunicationHandler] Usuario registrado: Q
+[2025-11-24 23:17:00] [UserController] Obtenidos 2 usuarios no aceptados
+[2025-11-24 23:17:08] [UserController] Usuario creado: QA
+[2025-11-24 23:17:08] [CommunicationHandler] Usuario registrado: QA
+[2025-11-24 23:17:08] [UserController] Obtenidos 3 usuarios no aceptados
+[2025-11-24 23:17:15] [UserController] Usuario aprobado: jejeje (ID: 32)
+[2025-11-24 23:17:16] [UserController] Usuario aprobado: Q (ID: 34)
+[2025-11-24 23:17:16] [UserController] Usuario aprobado: QA (ID: 35)
+[2025-11-24 23:17:26] [Server] Servidor detenido.
+[2025-11-24 23:17:26] [Server] se ha detenido el servidor: Socket closed
+[2025-11-24 23:20:47] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:20:50] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:21:11] [Server] Nueva conexión desde 127.0.0.1:63187
+[2025-11-24 23:21:11] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:63187
+[2025-11-24 23:21:14] [UserController] Usuario creado: a
+[2025-11-24 23:21:14] [CommunicationHandler] Usuario registrado: a
+[2025-11-24 23:21:14] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-24 23:21:24] [UserController] Usuario aprobado: a (ID: 36)
+[2025-11-24 23:21:31] [CommunicationHandler] Login fallido - datos incompletos
+[2025-11-24 23:25:57] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:25:58] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:26:04] [Server] Nueva conexión desde 127.0.0.1:65018
+[2025-11-24 23:26:04] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:65018
+[2025-11-24 23:26:24] [ConnectionHandler] Error en conexión 127.0.0.1:65018: Connection reset
+[2025-11-24 23:26:24] [Server] Sesión eliminada: 127.0.0.1:65018
+[2025-11-24 23:26:24] [ConnectionHandler] Conexión cerrada: 127.0.0.1:65018
+[2025-11-24 23:30:07] [Server] Nueva conexión desde 127.0.0.1:54941
+[2025-11-24 23:30:07] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:54941
+[2025-11-24 23:30:16] [CommunicationHandler] Login fallido - datos incompletos
+[2025-11-24 23:31:43] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:31:45] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:31:53] [Server] Nueva conexión desde 127.0.0.1:64362
+[2025-11-24 23:31:53] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:64362
+[2025-11-24 23:31:59] [ConnectionHandler] Error en conexión 127.0.0.1:64362: Connection reset
+[2025-11-24 23:31:59] [Server] Sesión eliminada: 127.0.0.1:64362
+[2025-11-24 23:31:59] [ConnectionHandler] Conexión cerrada: 127.0.0.1:64362
+[2025-11-24 23:32:14] [Server] Nueva conexión desde 127.0.0.1:50511
+[2025-11-24 23:32:14] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:50511
+[2025-11-24 23:32:22] [UserController] Intento de login con usuario inexistente: 
+[2025-11-24 23:32:22] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-24 23:33:14] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:33:16] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:33:32] [Server] Nueva conexión desde 127.0.0.1:57730
+[2025-11-24 23:33:32] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:57730
+[2025-11-24 23:33:47] [ConnectionHandler] Error en conexión 127.0.0.1:57730: Connection reset
+[2025-11-24 23:33:47] [Server] Sesión eliminada: 127.0.0.1:57730
+[2025-11-24 23:33:47] [ConnectionHandler] Conexión cerrada: 127.0.0.1:57730
+[2025-11-24 23:34:20] [Server] Nueva conexión desde 127.0.0.1:50583
+[2025-11-24 23:34:20] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:50583
+[2025-11-24 23:34:29] [UserController] Intento de login con usuario inexistente: 
+[2025-11-24 23:34:29] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-24 23:35:33] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:35:43] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:35:50] [Server] Nueva conexión desde 127.0.0.1:57948
+[2025-11-24 23:35:50] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:57948
+[2025-11-24 23:35:56] [UserController] Intento de login con usuario inexistente: 
+[2025-11-24 23:35:56] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-24 23:37:09] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:37:32] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:37:32] [Server] Nueva conexión desde 127.0.0.1:57787
+[2025-11-24 23:37:32] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:57787
+[2025-11-24 23:37:33] [UserController] Intento de login con usuario inexistente: 
+[2025-11-24 23:37:33] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-24 23:39:43] [UserController] Obtenidos 0 usuarios no aceptados
+[2025-11-24 23:39:45] [Server] Servidor iniciado en el puerto 8083
+[2025-11-24 23:39:57] [Server] Nueva conexión desde 127.0.0.1:64248
+[2025-11-24 23:39:57] [ConnectionHandler] Conexión establecida desde: 127.0.0.1:64248
+[2025-11-24 23:40:04] [UserController] Usuario creado: b
+[2025-11-24 23:40:04] [CommunicationHandler] Usuario registrado: b
+[2025-11-24 23:40:04] [UserController] Obtenidos 1 usuarios no aceptados
+[2025-11-24 23:40:10] [UserController] Intento de login de usuario no aceptado: b
+[2025-11-24 23:40:10] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-24 23:43:11] [UserController] Intento de login de usuario no aceptado: b
+[2025-11-24 23:43:11] [CommunicationHandler] Error en login: Cannot invoke "com.proyect.DTO.UserDTO.toString()" because "loginDTO" is null
+[2025-11-24 23:43:20] [ConnectionHandler] Error en conexión 127.0.0.1:64248: Connection reset
+[2025-11-24 23:43:20] [Server] Sesión eliminada: 127.0.0.1:64248
+[2025-11-24 23:43:20] [ConnectionHandler] Conexión cerrada: 127.0.0.1:64248

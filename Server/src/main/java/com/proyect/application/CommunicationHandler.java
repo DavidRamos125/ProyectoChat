@@ -36,13 +36,13 @@ public class CommunicationHandler implements IObservable{
     public void handleMessage(String jsonMessage) {
         try {
             String action = JSONUtil.getProperty(jsonMessage, "action");
-
-            switch (action.toUpperCase()) {
+            System.out.println("mensaje recibido:"+jsonMessage);
+            switch (action) {
                 case "LOGIN":
                     handleLogin(jsonMessage);
                     break;
 
-                case "REGISTRER":
+                case "REGISTER":
                     handleRegister(jsonMessage);
                     break;
 
@@ -65,24 +65,20 @@ public class CommunicationHandler implements IObservable{
 
     private void handleLogin(String jsonMessage) {
         try {
-            String username = JSONUtil.getProperty(jsonMessage, "username");
-            String password = JSONUtil.getProperty(jsonMessage, "password");
-
-            if (username == null || password == null) {
+            String user = JSONUtil.getProperty(jsonMessage, "user");
+            System.out.println(">>"+user+"<<");
+            if (user == null) {
                 logger.logAccion("Login fallido - datos incompletos", this.getClass().getSimpleName());
                 return;
             }
 
-            UserDTO loginDTO = new UserDTO();
-            loginDTO.setUsername(username);
-            loginDTO.setPassword(password);
+            UserDTO loginDTO = JSONUtil.JSONToObject(user, UserDTO.class);
+            System.out.println(">>"+loginDTO+"<<");
+            loginDTO = userController.login(loginDTO);
 
-            UserDTO user = userController.login(loginDTO);
-
-            if (user != null) {
-                connectionHandler.createUserSession(user);
-
-                List<MessageDTO> userMessages = messageController.getMessagesByUser(user.getId());
+            if (loginDTO != null) {
+                connectionHandler.createUserSession(loginDTO);
+                List<MessageDTO> userMessages = messageController.getMessagesByUser(loginDTO.getId());
 
                 List<String> connectedUsers = server.getConnectedUsers()
                         .stream()
@@ -93,7 +89,6 @@ public class CommunicationHandler implements IObservable{
                         .distinct()
                         .collect(Collectors.toList());
 
-                // Enviar respuesta con datos del login
                 String loginResponse = JSONBuilder.create()
                         .add("action", "LOGIN_SUCCESS")
                         .add("user", user)
@@ -103,9 +98,9 @@ public class CommunicationHandler implements IObservable{
                         .build();
 
                 connectionHandler.sendMessage(loginResponse);
-                logger.logAccion("Login exitoso: " + username, this.getClass().getSimpleName());
+                logger.logAccion("Login exitoso: " + loginDTO.toString(), this.getClass().getSimpleName());
             } else {
-                logger.logAccion("Login fallido - usuario no aceptado: " + username, this.getClass().getSimpleName());
+                logger.logAccion("Login fallido - usuario no aceptado: " + loginDTO.toString(), this.getClass().getSimpleName());
             }
 
         } catch (Exception e) {
@@ -115,15 +110,15 @@ public class CommunicationHandler implements IObservable{
 
     private void handleRegister(String jsonMessage) {
         try {
-            UserDTO newUser = new UserDTO();
-            String username = JSONUtil.getProperty(jsonMessage, "username");
-            newUser.setUsername(username);
-            newUser.setPassword(JSONUtil.getProperty(jsonMessage, "password"));
+            UserDTO newUser;
+            String userJson = JSONUtil.getProperty(jsonMessage, "user");
+            newUser = JSONUtil.JSONToObject(userJson, UserDTO.class);
             UserDTO createdUser = userController.createUser(newUser);
 
             if (createdUser != null) {
-                logger.logAccion("Usuario registrado: " + username, this.getClass().getSimpleName());
+                logger.logAccion("Usuario registrado: " + createdUser.toString(), this.getClass().getSimpleName());
             }
+            notify("NUEVO_PENDIENTE");
         } catch (Exception e) {
             logger.logAccion("Error registrando usuario: " + e.getMessage(), this.getClass().getSimpleName());
         }
